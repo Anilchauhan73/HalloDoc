@@ -1,0 +1,98 @@
+﻿
+body {
+    background-color: #FAFAFA;
+}
+
+.head-text {
+    font-weight: 600;
+    font-size: 150%;
+    text-align: center;
+}
+
+
+.moon-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-top: 20px;
+    color: #01bce9;
+    margin-right: 20px;
+    border: 1px solid #01bce9;
+    border-radius: 4px;
+    padding: 5px 10px;
+    z-index: 1;
+}
+
+.header {
+    margin-bottom: 2%;
+    display: block;
+    margin: auto;
+    background-color: white;
+}
+
+.theme-icon {
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: #FAFAFA;
+}
+
+
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.foo-text {
+    color: black;
+}
+
+
+
+.b-reg {
+    background-color: #00008B;
+    border-radius: 10px;
+    border: #FAFAFA;
+    font-size: large;
+}
+
+.b-req {
+    background-color: #00BFFF;
+    border-radius: 10px;
+    border: #FAFAFA;
+    margin-top: 175px;
+}
+
+.text {
+    color: white;
+}
+
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.moon {
+    height: 38px;
+    width: 30px;
+}
+
+
+
+@media (max-width:600px) {
+    .HalloDoc {
+        visibility: hidden;
+    }
+
+    .main {
+        background: url('/images/login.png.jpg');
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+        background-color: rgba(255, 255, 255, 0.464);
+    }
+
+}

@@ -1,0 +1,98 @@
+
+body[b-cbrkudet5j] {
+    background-color: #FAFAFA;
+}
+
+.head-text[b-cbrkudet5j] {
+    font-weight: 600;
+    font-size: 150%;
+    text-align: center;
+}
+
+
+.moon-icon[b-cbrkudet5j] {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-top: 20px;
+    color: #01bce9;
+    margin-right: 20px;
+    border: 1px solid #01bce9;
+    border-radius: 4px;
+    padding: 5px 10px;
+    z-index: 1;
+}
+
+.header[b-cbrkudet5j] {
+    margin-bottom: 2%;
+    display: block;
+    margin: auto;
+    background-color: white;
+}
+
+.theme-icon[b-cbrkudet5j] {
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: #FAFAFA;
+}
+
+
+.footer[b-cbrkudet5j] {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.foo-text[b-cbrkudet5j] {
+    color: black;
+}
+
+
+
+.b-reg[b-cbrkudet5j] {
+    background-color: #00008B;
+    border-radius: 10px;
+    border: #FAFAFA;
+    font-size: large;
+}
+
+.b-req[b-cbrkudet5j] {
+    background-color: #00BFFF;
+    border-radius: 10px;
+    border: #FAFAFA;
+    margin-top: 175px;
+}
+
+.text[b-cbrkudet5j] {
+    color: white;
+}
+
+.dark-mode[b-cbrkudet5j] {
+    background-color: black;
+    color: white;
+}
+
+.moon[b-cbrkudet5j] {
+    height: 38px;
+    width: 30px;
+}
+
+
+
+@media (max-width:600px) {
+    .HalloDoc[b-cbrkudet5j] {
+        visibility: hidden;
+    }
+
+    .main[b-cbrkudet5j] {
+        background: url('/images/login.png.jpg');
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+        background-color: rgba(255, 255, 255, 0.464);
+    }
+
+}

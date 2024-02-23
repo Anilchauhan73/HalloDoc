@@ -1,0 +1,84 @@
+﻿@using System.Globalization;
+@model HalloDocServices.Admin.DashboardDetails;
+
+<div class="table-responsive d-none d-md-block">
+    <table class="table">
+
+        <thead>
+            <tr class="text-secondary">
+                <th scope="col">Name</th>
+                <th scope="col">Date Of Birth</th>
+                <th scope="col">Requestor</th>
+                <th scope="col">Physician Name</th>
+                <th scope="col">Date of service</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+                <th scope="col">Notes</th>
+                <th scope="col">Chat With</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="whiteFont">
+
+            @foreach (var client in Model.clients!)
+            {
+                <tr class="style_@client.Request.RequestTypeId">
+                    <td>@client.FirstName  @client.LastName</td>
+                    <td>@client.StrMonth, @client.IntDate, @client.IntYear</td>
+                    <td>@client.Request.FirstName @client.Request.LastName</td>
+                    <td>@DateOnly.FromDateTime(@client.Request.CreatedDate)</td>
+                    <td>@client.Request.PhoneNumber</td>
+                    <td>@client.Street, @client.City, @client.State, @client.ZipCode</td>
+                    <td>@client.Notes</td>
+                    <td>
+                        <button class="btn adminButton whiteFont">Provider</button>
+
+                    </td>
+                    <td>
+                        @*  <div class="dropdown">
+                    <button class="btn dropdown-toggle adminButton whiteFont" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Actions
+                    </button>
+                    <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" type="button"><i class="bi bi-list-check"></i> &nbsp; Assign Case</button></li>
+                    <li><button class="dropdown-item" type="button"><i class="bi bi-x-circle"></i> &nbsp; Cancel Case</button></li>
+                    <li><button class="dropdown-item" type="button">View Case</button></li>
+                    <li><button class="dropdown-item" type="button">View Notes</button></li>
+                    <li><button class="dropdown-item" type="button">Block Patient</button></li>
+                    </ul>
+                    </div>*@
+
+
+                        <div class="d-flex align-items-center col-sm-6">
+                            <select class="lightButton">
+                                <option value="">&nbsp; Assign Case</option>
+                                <option value="India"> &nbsp; Cancel Case</option>
+                                <option value="America">View Case</option>
+                                <option value="Australia">View Notes</option>
+                                <option value="Australia">Block Patient</option>
+                            </select>
+                        </div>
+
+
+
+
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<script>
+    $('.collapse').parent().find(".glyphicon-minus").removeClass("glyphicon-minus")
+        .addClass("glyphicon-plus").css('color', 'green');
+
+    $('.collapse').collapse('hide');
+</script>
+

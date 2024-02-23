@@ -1,0 +1,342 @@
+﻿@model HalloDocServices.Admin.DashboardDetails;
+@{
+    Layout = "";
+}
+@{
+    ViewData["Title"] = "AdminDashboard";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/Admindashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+<body>
+    <header class="anil  d-flex justify-content-between">
+        <div>
+            <img class="hallodoc-logo img-fluid" src="/images/Fig56. Patient site 1.png" alt="HalloDoc Logo">
+        </div>
+
+        <div class="">
+            <span class="header-text mt-3">Welcome <strong>Admin Admin2</strong></span>
+            <a class="logoutBtn px-2 py-2 m-2 text-decoration-none" href="#" alt="Moon">  <i class="bi bi-box-arrow-right me-2"></i>Logout</a>
+            <img class="moon-icon px-3 py-2 m-2" src="/images/moon.svg" alt="Moon">
+        </div>
+
+
+    </header>
+    <div class="tab">
+        <button class="tablinks" onclick="openPage(event, 'dashboard')">Dashboard</button>
+        <button class="tablinks" onclick="openPage(event, 'Provider Location')">Provider Location</button>
+        <button class="tablinks" onclick="openPage(event, 'My Profile')">My Profile</button>
+        <button class="tablinks" onclick="openPage(event, 'Providers')">Providers</button>
+        <button class="tablinks" onclick="openPage(event, 'Partners')">Partners</button>
+        <button class="tablinks" onclick="openPage(event, 'Access')">Access</button>
+        <button class="tablinks" onclick="openPage(event, 'Records')">Records</button>
+    </div>
+    <div class="mainDiv">
+    
+        <div class="mx-sm-4 mx-2 mb-3">
+
+            <div class="row">
+                <div class="col-lg-2 col-4 px-1">
+                    <div class="rounded mx-1 my-2 new newActive title p-3 d-flex flex-column pointer largerFont smallScreenText" id="pills-new-tab" onclick="newState()">
+                        <span class="d-flex align-items-center mb-2">
+                            <i class="bi bi-patch-plus"></i>
+                            &nbsp; NEW
+                        </span>
+                     
+                         <span>@Model.newRequest</span> 
+                    </div>
+                </div>
+                <div class="col-lg-2 col-4 px-1">
+                    <div class="rounded mx-1 my-2 pending title p-3 d-flex flex-column pointer largerFont smallScreenText" id="pills-pending-tab" onclick="pendingState()">
+                        <span class="d-flex align-items-center mb-2">
+                            <i class="bi bi-clock-history "></i>
+
+                            &nbsp; PENDING
+                        </span>
+                        <span>@Model.pendingRequest</span>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-2 col-4 px-1">
+                    <div class="rounded mx-1 my-2 activeState title p-3 d-flex flex-column pointer largerFont smallScreenText" id="pills-active-tab" onclick="activeState()">
+                        <span class="d-flex align-items-center mb-2">
+                            <i class="bi bi-check2-circle"></i>
+                            &nbsp; ACTIVE
+                        </span>
+                        <span>@Model.activeRequest</span>
+  
+                    </div>
+                </div>
+                <div class="col-lg-2 col-4 px-1">
+                    <div class="rounded mx-1 my-2 conclude title p-3 d-flex flex-column pointer largerFont smallScreenText" id="pills-conclude-tab" onclick="concludeState()">
+                        <span class="d-flex align-items-center mb-2">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                            &nbsp; CONCLUDE
+                        </span>
+                        <span>1078</span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-4 px-1">
+                    <div class="rounded mx-1 my-2 toclose title p-3 d-flex flex-column pointer largerFont smallScreenText" id="pills-close-tab" onclick="closeState()">
+                        <span class="d-flex align-items-center mb-2">
+                            <i class="bi bi-x-circle"></i>
+                            &nbsp;  TO CLOSE
+                        </span>
+                        <span>519</span>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-4 px-1">
+                    <div class="rounded mx-1 my-2 unpaid title p-3 d-flex flex-column pointer largerFont smallScreenText" id="pills-unpaid-tab" onclick="unpaidState()">
+                        <span class="d-flex align-items-center mb-2">
+                            <i class="bi bi-ban"></i>
+                            &nbsp; UNPAID
+                        </span>
+                        <span>16</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between my-3">
+                <div class="title">Patients</div>
+                <div class="mx-1">
+                    <button type="button" class="submitButton m-0 rounded btn">
+                        <i class="bi bi-send"></i> <span class="d-none d-lg-inline">&nbsp;Send Link</span>
+                    </button>
+                    <button type="button" class="btn submitButton m-0 rounded">
+
+                  
+                        <span class="d-none d-lg-inline">&nbsp; Create Requests</span>
+                    </button>
+                    <button type="button" class=" btn submitButton m-0 rounded"><span class="d-none d-lg-inline">Export</span></button>
+                    <button type="button" class="btn submitButton m-0 rounded"><span class="d-none d-lg-inline">Export All</span></button>
+                    <button type="button" class="btn submitButton m-0 rounded"><span class="d-none d-lg-inline">Request DTY Support</span></button>
+                </div>
+            </div>
+
+
+
+            <div class="rounded shadow">
+                <div class="d-lg-flex justify-content-between p-3">
+
+                    <div class="row mb-sm-1 mb-4">
+                        <form class="my-2 col-sm-6">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search Patients"
+                                   aria-label="Search">
+                        </form>
+                        <div class="d-flex align-items-center col-sm-6">
+                            <select class="lightButton">
+                                <option value="">All Regions</option>
+                                <option value="India">India</option>
+                                <option value="America">America</option>
+                                <option value="Australia">Australia</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-lg-between align-items-center">
+                        <button class="btn rounded border mx-2 d-none d-lg-block">All</button>
+
+                        <div class="mx-xl-4 d-flex align-items-center">
+                            <span class="rounded-circle bg-success mx-1"></span>
+                            <span class="mx-1">Patient</span>
+                        </div>
+                        <div class="mx-xl-4 d-flex align-items-center">
+                            <span class="rounded-circle bg-warning mx-1"></span>
+                            <span class="mx-1 smallScreenSText">Family/Friend</span>
+                        </div>
+                        <div class="mx-xl-4 d-flex align-items-center">
+                            <span class="rounded-circle mx-1 businessColor"></span>
+                            <span class="mx-1 smallScreenSText">Business</span>
+                        </div>
+                        <div class="mx-xl-4 d-flex align-items-center">
+                            <span class="rounded-circle bg-info mx-1"></span>
+                            <span class="mx-1 smallScreenSText">Concierge</span>
+                        </div>
+                        <div class="ml-xl-4 d-flex align-items-center">
+                            <span class="rounded-circle mx-1 vipColor"></span>
+                            <span class="mx-1 smallScreenSText">VIP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tableContent">
+                </div>
+
+            </div>
+        </div>
+     
+    </div>
+
+ 
+
+
+
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "/Admin/NewTable",
+            type: "POST",
+            dataType: "html",
+
+            success: function (data) {
+                $("#tableContent").html(data);
+            },
+            error: function () {
+                alert("No Projects Found");
+                $("#tableContent").html('An error has occurred');
+            }
+        });
+        $('#pills-new-tab').click(function () {
+            $.ajax({
+                url: "/Admin/NewTable",
+                type: "POST",
+                dataType: "html",
+                success: function (data) {
+                    $("#tableContent").html(data);
+                },
+                error: function () {
+                    alert("No Projects Found");
+                    $("#tableContent").html('An error has occurred');
+                }
+            });
+        });
+        $('#pills-pending-tab').click(function () {
+            $.ajax({
+                url: "/Admin/PendingTable",
+                type: "POST",
+                dataType: "html",
+                success: function (data) {
+                    $("#tableContent").html(data);
+                },
+                error: function () {
+                    alert("No Projects Found");
+                    $("#tableContent").html('An error has occurred');
+                }
+            });
+        });
+        $('#pills-active-tab').click(function () {
+            $.ajax({
+                url: "/Admin/ActiveTable",
+                type: "POST",
+                dataType: "html",
+                success: function (data) {
+                    $("#tableContent").html(data);
+                },
+                error: function () {
+                    alert("No Projects Found");
+                    $("#tableContent").html('An error has occurred');
+                }
+            });
+        });
+        $('#pills-conclude-tab').click(function () {
+            $.ajax({
+                url: "/Admin/ConcludeTable",
+                type: "POST",
+                dataType: "html",
+                success: function (data) {
+                    $("#tableContent").html(data);
+                },
+                error: function () {
+                    alert("No Projects Found");
+                    $("#tableContent").html('An error has occurred');
+                }
+            });
+        });
+        $('#pills-close-tab').click(function () {
+            $.ajax({
+                url: "/Admin/ToCloseTable",
+                type: "POST",
+                dataType: "html",
+                success: function (data) {
+                    $("#tableContent").html(data);
+                },
+                error: function () {
+                    alert("No Projects Found");
+                    $("#tableContent").html('An error has occurred');
+                }
+            });
+        });
+        $('#pills-unpaid-tab').click(function () {
+            $.ajax({
+                url: "/Admin/UnpaidTable",
+                type: "POST",
+                dataType: "html",
+                success: function (data) {
+                    $("#tableContent").html(data);
+                },
+                error: function () {
+                    alert("No Projects Found");
+                    $("#tableContent").html('An error has occurred');
+                }
+            });
+        });
+    });
+
+
+    function newState() {
+        document.getElementById("pills-new-tab").classList.add("newActive");
+        document.getElementById("pills-pending-tab").classList.remove("pendingActive");
+        document.getElementById("pills-active-tab").classList.remove("activeStateActive");
+        document.getElementById("pills-conclude-tab").classList.remove("concludeActive");
+        document.getElementById("pills-close-tab").classList.remove("tocloseActive");
+        document.getElementById("pills-unpaid-tab").classList.remove("unpaidActive");
+    }
+
+    function pendingState() {
+        document.getElementById("pills-new-tab").classList.remove("newActive");
+        document.getElementById("pills-pending-tab").classList.add("pendingActive");
+        document.getElementById("pills-active-tab").classList.remove("activeStateActive");
+        document.getElementById("pills-conclude-tab").classList.remove("concludeActive");
+        document.getElementById("pills-close-tab").classList.remove("tocloseActive");
+        document.getElementById("pills-unpaid-tab").classList.remove("unpaidActive");
+    }
+    function activeState() {
+        document.getElementById("pills-new-tab").classList.remove("newActive");
+        document.getElementById("pills-pending-tab").classList.remove("pendingActive");
+        document.getElementById("pills-active-tab").classList.add("activeStateActive");
+        document.getElementById("pills-conclude-tab").classList.remove("concludeActive");
+        document.getElementById("pills-close-tab").classList.remove("tocloseActive");
+        document.getElementById("pills-unpaid-tab").classList.remove("unpaidActive");
+    }
+    function concludeState() {
+        document.getElementById("pills-new-tab").classList.remove("newActive");
+        document.getElementById("pills-pending-tab").classList.remove("pendingActive");
+        document.getElementById("pills-active-tab").classList.remove("activeStateActive");
+        document.getElementById("pills-conclude-tab").classList.add("concludeActive");
+        document.getElementById("pills-close-tab").classList.remove("tocloseActive");
+        document.getElementById("pills-unpaid-tab").classList.remove("unpaidActive");
+    }
+    function closeState() {
+        document.getElementById("pills-new-tab").classList.remove("newActive");
+        document.getElementById("pills-pending-tab").classList.remove("pendingActive");
+        document.getElementById("pills-active-tab").classList.remove("activeStateActive");
+        document.getElementById("pills-conclude-tab").classList.remove("concludeActive");
+        document.getElementById("pills-close-tab").classList.add("tocloseActive");
+        document.getElementById("pills-unpaid-tab").classList.remove("unpaidActive");
+    }
+    function unpaidState() {
+        document.getElementById("pills-new-tab").classList.remove("newActive");
+        document.getElementById("pills-pending-tab").classList.remove("pendingActive");
+        document.getElementById("pills-active-tab").classList.remove("activeStateActive");
+        document.getElementById("pills-conclude-tab").classList.remove("concludeActive");
+        document.getElementById("pills-close-tab").classList.remove("tocloseActive");
+        document.getElementById("pills-unpaid-tab").classList.add("unpaidActive");
+    }
+</script>
+</html>

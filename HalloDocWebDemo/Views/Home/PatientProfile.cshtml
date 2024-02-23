@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewData["Title"] = "PatientProfile";
+}
+@{
+    Layout = "";
+  
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/PatientDashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body onload="openPage(event, 'profile' )">
+
+    <header class=" d-flex justify-content-between">
+        <div>
+            <img class="hallodoc-logo img-fluid" src="/images/Fig56. Patient site 1.png" alt="HalloDoc Logo">
+        </div>
+
+        <div class="">
+            <span class="header-text mt-3">Welcome <strong>Tests Testing</strong></span>
+            <a class="logoutBtn px-2 py-2 m-2 text-decoration-none" href="#" alt="Moon">  <i class="bi bi-box-arrow-right me-2"></i>Logout</a>
+            <img class="moon-icon px-3 py-2 m-2" src="/images/moon.svg" alt="Moon">
+        </div>
+
+    </header>
+
+    <div class="">
+        <div class="tab">
+            <button class="tablinks" onclick="openPage(event, 'dashboard')"><a class="text-decoration-none text-black" asp-action="PatientDashboard" asp-controller="Home" > Dashboard </a> </button>
+            <button class="tablinks" onclick="openPage(event, 'profile')">Profile</button>
+
+        </div>
+        <div id="dashboard" class="tabcontent">
+        </div>
+
+        <div id="profile" class="tabcontent">
+            <div class="container back-color anil">
+
+                <form asp-action="" asp-controller="Home" >
+
+                    <div class="container">
+                        <div class="mt-3 d-flex justify-content-end">
+                            <span class=" text-primary back-btn"><a asp-action="PatientDashboard" asp-controller="Home" class="text-decoration-none">&lt;Back</a></span>
+                        </div>
+
+                        <h6 class="mb-3 mx-4 mt-3 fs-5">Patient Information</h6>
+
+                        <div class="row mt-3 mx-2">
+                            <div class=" col-md-6 form-floating mb-3">
+                                <input  value="@ViewBag.fname" type="text" class="form-control " id="floatingInput" placeholder=" First Name">
+                                <label for="floatingInput"></label>
+                            </div>
+                            <div class=" col-md-6 form-floating">
+                                <input  value="@ViewBag.lname" type="text" class="form-control" id="floatingPassword" placeholder=" Last Name">
+                                <label for="floatingPassword"></label>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3 mx-2">
+                            <div class="col-md-6 form-floating mb-3">
+                                <input  value="@ViewBag.dob" id="dob" class="form-control" placeholder="Date Of Birth">
+                                <label for="dob"></label>
+                            </div>
+                        </div>
+
+
+
+
+                        <h6 class="mb-3 mx-4 mt-3 fs-5">Patient  Contact Information</h6>
+
+                        <div class="row mt-3 mx-2">
+                            <div class="col-md-2 form-floating mb-3">
+                                <select class="form-control">
+                                    <option value="mobile">Mobile </option>
+                                    <option value="landline">LandLine</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 form-floating mb-3">
+                                <input  type="text" id="contact" class="form-control country-code" placeholder="@ViewBag.pnumber">
+                            </div>
+                            <div class="col-md-6 form-floating mb-3">
+                                <input  value="@ViewBag.email" type="text" id="email" class="form-control" placeholder="Email">
+                                <label for="email"></label>
+                            </div>
+                        </div>
+
+
+                        <h6 class="mb-3 mx-4 mt-3 fs-5">Patient Location</h6>
+
+                        <div class="row mt-3 mx-2">
+                            <div class="col-md-6 form-floating mb-2">
+                                <input  value="@ViewBag.street" type="text" id="street" class="form-control" placeholder="Street">
+                                <label for="street"></label>
+                            </div>
+                            <div class="col-md-6 form-floating">
+                                <input  value="@ViewBag.city" type="text" id="city" class="form-control" placeholder="City">
+                                <label for="city"></label>
+                            </div>
+                            <div class="col-md-6 py-2 form-floating">
+                                <input  value="@ViewBag.state" type="text" id="state" class="form-control" placeholder="State">
+                                <label for="state"></label>
+                            </div>
+                            <div class="col-md-6 py-2 form-floating">
+                                <input  value="@ViewBag.zipcode" type="text" id="zip-code" class="form-control" placeholder="Zip code">
+                                <label for="zip-code"></label>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end mb-3">
+                            <button type="button" id="editBtn" class="btn btn-info text-white EditBtn" onclick="enableFields()">Edit </button>
+
+                            <button type="submit" id="submitBtn" class="btn btn-info text-white EditBtn">Submit </button>
+
+                            <button type="button" id="cancelBtn" class="btn btn-outline-info EditBtn" onclick="disableFields()">Cancel</button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer ">
+        <a href="#" class="text-decoration-none foo-text">Terms of condition &nbsp; |</a>
+        <a href="#" class="text-decoration-none foo-text">&nbsp; Privacy Policy&nbsp;</a>
+    </footer>
+
+
+
+
+
+</body>
+
+<script>
+    const input = document.querySelector("#contact");
+    window.intlTelInput(input, {
+        initialCounry: "auto",
+        geoIpLookup: function (callback) {
+            $.get('https://ipinfo.io', function () { }, "jsonp").always(function (resp) {
+                const countryCode = (resp && resp.country) ? resp.country : "us";
+                callback(countryCode);
+            });
+        }
+    });
+
+    function openPage(evt, pageName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(pageName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    function disableFields() {
+
+
+        document.querySelectorAll('input, select').forEach(function (element) {
+            element.disabled = true;
+        });
+
+        // Hide the submit and cancel buttons, show the edit button
+        document.getElementById('submitBtn').style.display = 'none';
+        document.getElementById('cancelBtn').style.display = 'none';
+        document.getElementById('editBtn').style.display = 'block';
+
+    }
+
+    function enableFields() {
+
+        document.querySelectorAll('input, select').forEach(function (element) {
+            element.disabled = false;
+        });
+
+        // Show the submit and cancel buttons, hide the edit button
+        document.getElementById('submitBtn').style.display = 'block';
+        document.getElementById('cancelBtn').style.display = 'block';
+        document.getElementById('editBtn').style.display = 'none';
+    }
+    disableFields();
+</script>
+</html>

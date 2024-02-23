@@ -1,0 +1,110 @@
+﻿.back-btn {
+    width: 79px;
+    height: 36px;
+    border: 1px solid #01bce9;
+    font-size: 23px;
+    border-radius: 5px;
+}
+
+.anil {
+    background-color: rgba(248, 248, 255, 0.695);
+}
+
+label {
+    margin-left: 20px;
+}
+
+.header {
+    position: sticky;
+    box-shadow: 1px 5px 5px 1px rgb(0 0 0 / 20%);
+}
+
+.header-logo {
+    width: 120px;
+    margin-left: 40px;
+}
+
+.moon-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-top: 20px;
+    color: #01bce9;
+    margin-right: 20px;
+    border: 1px solid #01bce9;
+    border-radius: 4px;
+    padding: 5px 10px;
+    z-index: 1;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+.upload-file {
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: flex-end;
+    padding: 7px 30px;
+    cursor: pointer;
+    color: #292929;
+    background: #01bce9;
+}
+
+.file-upload {
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.upload-btn {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.submit-btn {
+    color: #fff;
+    background: #01bce9;
+    border: 1px solid #01bce9;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.cancel-file {
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: flex-end;
+    padding: 7px 30px;
+    cursor: pointer;
+    color: #292929;
+}
+
+
+.footer {
+    margin-top: 20px;
+    bottom: 0;
+    display: flex;
+    justify-content: end;
+    right: 0;
+    width: 100%;
+    background-color: black;
+}
+
+.mobile {
+    height: 56px;
+}
+
+.iti {
+    display: inline-block;
+    width: 100%;
+}
+
+.iti_country-list {
+    max-width: 360px;
+}
+
+
+
+
+

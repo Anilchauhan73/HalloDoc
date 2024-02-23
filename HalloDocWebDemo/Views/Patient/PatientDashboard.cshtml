@@ -1,0 +1,145 @@
+﻿@model HalloDocServices.ViewModels.PatientDashboard;
+
+@{
+    ViewData["Title"] = "PatientDashboard";
+}
+@{
+    Layout = "";
+    var count=0  ;
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/PatientDashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body onload="openPage(event, 'dashboard' )">
+    <header class=" d-flex justify-content-between">
+        <div>
+            <img class="hallodoc-logo img-fluid" src="/images/Fig56. Patient site 1.png" alt="HalloDoc Logo">
+        </div>
+
+        <div class="">
+            <span class="header-text mt-3">Welcome <strong>Tests Testing</strong></span>
+            <a class="logoutBtn px-2 py-2 m-2 text-decoration-none" href="#" alt="Moon">  <i class="bi bi-box-arrow-right me-2"></i>Logout</a>
+            <img class="moon-icon px-3 py-2 m-2" src="/images/moon.svg" alt="Moon">
+        </div>
+
+    </header>
+
+
+
+    <div class="container-fluid">
+        <div class="tab">
+            <button class="tablinks" onclick="openPage(event, 'dashboard')">Dashboard</button>
+            <button class="tablinks" onclick="openPage(event, 'profile')">   <a class="text-decoration-none text-black" asp-action="PatientProfile" asp-controller="Home"> Profile</a> </button>
+
+        </div>
+
+        <div id="dashboard" class="tabcontent">
+            <div class="d-flex justify-content-between">
+                <h4 class="mb-2 mt-5">Medical History</h4>
+                <button class=" mb-2 mt-5 py-2 create-request bg-white">Create New Request</button>
+            </div>
+
+            <div>
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Current Status</th>
+                            <th scope="col">Document</th>
+                        </tr>
+                    </thead>
+                   
+                    <tbody>
+
+
+                        @foreach (var item in Model.Request)
+                        {
+                            count = 0;
+                          
+                            {
+                              
+                                <tr>
+                                    <td>@item.CreatedDate.Date.ToString("dd MMM yyyy")</td>
+                                    <td>@item.Status</td>
+
+                                    <td>
+                                        @foreach (var file in Model.RequestWiseFile)
+                                        {
+                                          
+                                            @if (@item.RequestId == file.RequestId)
+                                            {
+                                                count = count + 1;
+                                            }
+                                          
+                                        }
+                                        @if (count >= 1)
+                                        {
+                                            <a asp-action="ViewDocument" asp-controller="Patient" asp-route-id="@item.RequestId" class="text-primary btn border-1 rounded "> (@count) DOCUMENTS</a>
+                                        }
+
+
+
+
+
+                                    </td>
+
+                                </tr>
+                            }
+                        }
+                       
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div id="profile" class="tabcontent" >
+      
+        </div>
+    </div>
+
+    <footer class="footer container-fluid">
+        <a href="#" class="text-decoration-none foo-text">Terms of condition &nbsp; |</a>
+        <a href="#" class="text-decoration-none foo-text">&nbsp; Privacy Policy&nbsp;</a>
+    </footer>
+
+</body>
+<script>
+    const input = document.querySelector("#contact");
+window.intlTelInput(input, {
+    initialCounry: "auto",
+    geoIpLookup: function(callback) {
+        $.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+            const countryCode = (resp && resp.country) ? resp.country : "us";
+            callback(countryCode);
+        });
+    }
+});
+
+    function openPage(evt, pageName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(pageName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</html>

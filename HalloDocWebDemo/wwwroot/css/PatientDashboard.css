@@ -1,0 +1,135 @@
+.anil {
+    border: 2px solid black;
+}
+
+.hallodoc-logo {
+    width: 120px;
+    margin-left: 40px;
+}
+
+.moon-icon {
+    border: 1px solid #01bce9;
+    border-radius: 4px;
+    color: #01bce9;
+    z-index: 1;
+}
+
+.header-text {
+    font-size: 20px;
+}
+
+.logoutBtn {
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px blur #01bce9;
+    border: 1px solid #01bce9;
+}
+
+
+.create-request {
+    float: right;
+    border-radius: 5px;
+    border: 1px solid #01bce9;
+    box-shadow: 1px 1px 1px 1px blur #01bce9;
+}
+
+.tab {
+    overflow: hidden;
+    border-top: 1px solid #ccc;
+    /* box-shadow: 1px 5px 5px 1px rgb(0 0 0 / 20%); */
+}
+
+    /*Style the buttons inside the tab */
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.back-btn {
+    width: 79px;
+    height: 36px;
+    border: 1px solid #01bce9;
+    font-size: 23px;
+    border-radius: 5px;
+}
+
+.doc-button {
+    border: 1px solid #01bce9;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color:red;
+}
+
+
+/*************************************************************/
+.country-code {
+    height: 55px;
+}
+
+.iti {
+    display: inline-block;
+    width: 100%;
+}
+
+.iti_country-list {
+    max-width: 360px;
+}
+
+label {
+    margin-left: 10px;
+}
+
+.btn-div {
+    float: right;
+}
+
+
+/****************************** Footer css *******************/
+
+.footer {
+    width: 100%;
+    position: fixed;
+    justify-content: flex-end;
+    bottom: 0;
+    display: flex;
+    background-color: black;
+}
+
+.foo-text {
+    color: white;
+}
+
+.edit{
+    width :30px;
+}
+
+
+@media (max-width:500px) {
+    .logoutBtn {
+        visibility: hidden;
+    }
+}

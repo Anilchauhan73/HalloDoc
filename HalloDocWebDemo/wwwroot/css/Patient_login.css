@@ -1,0 +1,76 @@
+﻿
+.anil {
+    height: 100vh;
+}
+
+.moon {
+    height: 38px;
+    width: 30px;
+}
+
+.lt {
+    height: 20px;
+    font-size: 23px;
+    width: 20px;
+}
+
+.login {
+    height: 55px;
+}
+
+.center-content {
+    border: 1px solid white;
+    width: 360px;
+    height: 650px;
+    margin: auto;
+    background-image: url('~/images/login.png.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    background-color: rgba(255, 255, 255, 0.757);
+}
+
+.moon-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-top: 20px;
+    color: #01bce9;
+    margin-right: 20px;
+    border: 1px solid #01bce9;
+    border-radius: 4px;
+    padding: 5px 10px;
+    z-index: 1;
+}
+
+.back-btn {
+    width: 79px;
+    height: 36px;
+   
+    font-size: 23px;
+    border-radius: 5px;
+}
+
+.text-login {
+    font-size: 28px;
+    margin-top: 18px;
+}
+
+.main-content {
+    margin-top: 140px;
+    /* border: 2px solid green */
+}
+
+.footer {
+    margin-top: 60px;
+}
+
+
+
+
+@media (max-width:400px) {
+    .header {
+        visibility: hidden;
+    }
+}

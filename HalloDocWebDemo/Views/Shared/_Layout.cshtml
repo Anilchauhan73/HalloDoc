@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HalloDoc</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/HalloDoc.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="header container-fluid d-flex justify-content-between">
+            <img src="/images/Fig56. Patient site 1.png" class="img-fluid header-logo" alt="" />
+            <i class="bi bi-moon-fill moon-icon" id="toggleTheme"></i>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <div class="footer">
+        <p class="text-white">Terms of conditions &nbsp; &nbsp;|&nbsp;&nbsp; privacy policy</p>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
