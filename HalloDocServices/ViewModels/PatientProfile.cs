@@ -5,6 +5,8 @@ namespace HalloDocServices.ViewModels
     public class PatientProfile
     {
 
+        public List<User> User { get; set; }
+
         public required string FirstName { get; set; }
 
         public required string LastName { get; set; }
@@ -21,7 +23,7 @@ namespace HalloDocServices.ViewModels
 
         public required string State { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public String BirthDate { get; set; }
 
 
 

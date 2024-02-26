@@ -1,5 +1,6 @@
 ﻿using HalloDocRepository.DataContext;
 using HalloDocServices.Admin;
+using HalloDocServices.Implementation;
 using HalloDocServices.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,29 +24,29 @@ namespace HalloDocWebDemo.Controllers
 
         public IActionResult AdminDashboard()
         {
+            DashboardDetails details = new DashboardDetails();
+            details.newRequest = _AdminService.newDashboard().Count;
+            details.pendingRequest = _AdminService.pendingDashboard().Count;
+            return View(details);
 
-            DashboardDetails dashboarddetails = new();
-            int newRequest = _context.RequestClients.Include(u => u.Request).Where(u => u.Request.Status == 1).Count();
-            dashboarddetails.newRequest = newRequest;
-            int pendingRequest = _context.RequestClients.Include(u => u.Request).Where(u => u.Request.Status == 2).Count();
-            dashboarddetails.pendingRequest = pendingRequest;
-            int activeRequest = _context.RequestClients.Include(u => u.Request).Where(u => u.Request.Status == 3).Count();
-            dashboarddetails.activeRequest = activeRequest;
-            return View(dashboarddetails);
+
         }
 
         public IActionResult NewTable()
         {
             DashboardDetails details = new();
-            details.clients = _context.RequestClients.Include(u => u.Request).Where(u=>u.Request.Status == 1).ToList();
+            details.clients = _AdminService.newDashboard();
             return PartialView(details);
         }
 
+        
+
         public IActionResult PendingTable()
         {
-            DashboardDetails details1 = new();
-            details1.clients = _context.RequestClients.Include(u => u.Request).Where(u => u.Request.Status == 2).Include(u => u.Request.Physician).ToList();
-            return PartialView(details1);
+            DashboardDetails details = new();
+            details.clients = _AdminService.pendingDashboard();
+            
+            return PartialView(details);
         }
 
         public IActionResult ActiveTable()
@@ -75,6 +76,12 @@ namespace HalloDocWebDemo.Controllers
             DashboardDetails details5 = new();
             details5.clients = _context.RequestClients.Include(u => u.Request).Where(u => u.Request.Status == 6).ToList();
             return PartialView(details5);
+        }
+        public IActionResult ViewCase(int reqid)
+        {
+
+            var data = _AdminService.ViewCase(reqid);
+            return View(data);
         }
 
 

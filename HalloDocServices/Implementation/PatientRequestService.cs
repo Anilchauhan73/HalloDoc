@@ -1,5 +1,6 @@
 ﻿using HalloDocRepository.DataContext;
 using HalloDocRepository.DataModels;
+using HalloDocServices.Admin;
 using HalloDocServices.Interfaces;
 using HalloDocServices.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -7,8 +8,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting.Internal;
+using Microsoft.Extensions.Primitives;
 using System.IO.Compression;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HalloDocServices.Implementation
 {
@@ -100,10 +103,10 @@ namespace HalloDocServices.Implementation
                 {
                     string path = Directory.GetCurrentDirectory();
                     //String uploadFolder = Path.Combine(path,"\\wwwroot\\Uploads");
-                    String uploadFolder = path + "\\wwwroot\\Uploads";
+                    string uploadFolder = path + "\\wwwroot\\Uploads";
 
-                    String uniqueFilename = Guid.NewGuid().ToString() + "_" + Filename;
-                    String FilePath = Path.Combine(uploadFolder, uniqueFilename);
+                    string uniqueFilename = Guid.NewGuid().ToString() + "_" + Filename;
+                    string FilePath = Path.Combine(uploadFolder, uniqueFilename);
                     item.CopyTo(target: new FileStream(FilePath, FileMode.Create));
 
 
@@ -207,10 +210,10 @@ namespace HalloDocServices.Implementation
                 {
                     string path = Directory.GetCurrentDirectory();
                     //String uploadFolder = Path.Combine(path,"\\wwwroot\\Uploads");
-                    String uploadFolder = path + "\\wwwroot\\Uploads";
+                    string uploadFolder = path + "\\wwwroot\\Uploads";
 
-                    String uniqueFilename = Guid.NewGuid().ToString() + "_" + Filename;
-                    String FilePath = Path.Combine(uploadFolder, uniqueFilename);
+                    string uniqueFilename = Guid.NewGuid().ToString() + "_" + Filename;
+                    string FilePath = Path.Combine(uploadFolder, uniqueFilename);
                     item.CopyTo(target: new FileStream(FilePath, FileMode.Create));
 
 
@@ -358,7 +361,111 @@ namespace HalloDocServices.Implementation
                 }
                 return (ms.ToArray());
             }
+        }
+       
+
+        //public PatientProfile ProfileData( PatientProfile profile , string Email)
+        //{
+        //    var user = _context.RequestClients.Where(u => u.Email == Email).FirstOrDefault();
+            
+        //    //DateTime dob = DateTime.ParseExact(user.IntYear.ToString() + "-" + user.StrMonth + "-" + user.IntDate.ToString(), "yyyy-M-d", System.Globalization.CultureInfo.InvariantCulture);
+
+        //    PatientProfile profile1 = new PatientProfile()
+        //    {
+        //        FirstName = user.FirstName,
+        //        LastName = user.LastName,
+        //        //BirthDate = dob.ToString("yyyy-MM-dd"),
+        //        Email = user.Email,
+        //        PhoneNumber = user.PhoneNumber,
+        //        Street = user.Street,
+        //        State = user.State,
+        //        City = user.City,
+        //        ZipCode = user.ZipCode,
+
+
+        //    };
+        //    return profile1;
+
+        //}
+
+        //public void PatientProfile1(PatientProfile profile, string Email)
+        //{
+        //    var data = _context.Users.Where(a => a.Email == Email).FirstOrDefault();
+
+        //    if (data.Email == profile.Email)
+        //    {
+        //        data.FirstName = profile.FirstName;
+        //        data.LastName = profile.LastName;
+        //        data.Email = profile.Email;
+        //        data.Mobile = profile.PhoneNumber;
+        //        data.Street = profile.Street;
+        //        data.City = profile.City;
+        //        data.State = profile.State;
+        //        data.ZipCode = profile.ZipCode;
+        //        data.ModifiedDate = DateTime.Now;
+
+        //        _context.Users.Add(data);
+        //        _context.SaveChanges();
+        //    }
+        //    else
+        //    {
+        //        AspNetUser aspnetuser = new AspNetUser()
+        //        {
+        //            UserName = profile.FirstName + " " + profile.LastName,
+        //            Email = profile.Email,
+        //            PhoneNumber = profile.PhoneNumber,
+        //            ModifiedDate = DateTime.Now,
+        //        };
+        //        _context.AspNetUsers.Add(aspnetuser);
+        //    }
+        //}
+
+        public User ProfileService(string Email)
+        {
+            User data = _context.Users.Where(x => x.Email == Email).FirstOrDefault();
+            return data;
 
         }
+
+        public void PaProfile(string email, PatientProfile model)
+        {
+            var userdata = _context.Users.Where(x => x.Email == email).FirstOrDefault();
+
+            if (userdata.Email == model.Email)
+            {
+
+                userdata.FirstName = model.FirstName;
+                userdata.LastName = model.LastName;
+                userdata.Mobile = model.PhoneNumber;
+                userdata.Email = model.Email;
+                userdata.Street = model.Street;
+                userdata.City = model.City;
+                userdata.State = model.State;
+                userdata.ZipCode = model.ZipCode;
+                userdata.ModifiedDate = DateTime.Now;
+
+                _context.Users.Update(userdata);
+
+                _context.SaveChanges();
+            }
+            else
+            {
+                AspNetUser aspnetuser = new AspNetUser()
+                {
+                    UserName = model.FirstName + " " + model.LastName,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    ModifiedDate = DateTime.Now,
+
+                };
+
+                _context.AspNetUsers.Add(aspnetuser);
+            }
+
+
+
+        }
+
+
     }
 }

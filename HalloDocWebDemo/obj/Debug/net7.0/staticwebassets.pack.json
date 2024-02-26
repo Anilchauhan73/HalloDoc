@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\Uploads\\139bc81f-c528-4b63-b69b-04e72074e0b2_HalloDoc - DB.xlsx"
     },
     {
+      "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\1bff3fe5-92be-4c52-a874-463df017fd6e_HalloDoc - DB.xlsx",
+      "PackagePath": "staticwebassets\\Uploads\\1bff3fe5-92be-4c52-a874-463df017fd6e_HalloDoc - DB.xlsx"
+    },
+    {
       "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\1e2e9073-5f0d-47e8-ab00-9d6c2a87e869_Tatva_training-master (3).zip",
       "PackagePath": "staticwebassets\\Uploads\\1e2e9073-5f0d-47e8-ab00-9d6c2a87e869_Tatva_training-master (3).zip"
     },
@@ -41,6 +45,10 @@
       "PackagePath": "staticwebassets\\Uploads\\49bd2928-950d-40bc-9a9d-62580dc7cad8_MVC.pdf"
     },
     {
+      "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\5ad6d744-eaec-409e-9441-fc2765edd999_0e1f116a-bbd0-4d68-9a6e-3c1585644f3b_MVC (1).pdf",
+      "PackagePath": "staticwebassets\\Uploads\\5ad6d744-eaec-409e-9441-fc2765edd999_0e1f116a-bbd0-4d68-9a6e-3c1585644f3b_MVC (1).pdf"
+    },
+    {
       "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\7afe9e29-04e0-49cb-a1fb-6e336adf0143_SRS-23-24-Trainees-2Feb24.pdf",
       "PackagePath": "staticwebassets\\Uploads\\7afe9e29-04e0-49cb-a1fb-6e336adf0143_SRS-23-24-Trainees-2Feb24.pdf"
     },
@@ -51,6 +59,10 @@
     {
       "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\8948e56c-d3aa-4a1e-86fc-19a666ed09a1_0e1f116a-bbd0-4d68-9a6e-3c1585644f3b_MVC (1).pdf",
       "PackagePath": "staticwebassets\\Uploads\\8948e56c-d3aa-4a1e-86fc-19a666ed09a1_0e1f116a-bbd0-4d68-9a6e-3c1585644f3b_MVC (1).pdf"
+    },
+    {
+      "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\a89afe43-b7c0-4672-a235-a865ffa6eef2_7afe9e29-04e0-49cb-a1fb-6e336adf0143_SRS-23-24-Trainees-2Feb24 (1).pdf",
+      "PackagePath": "staticwebassets\\Uploads\\a89afe43-b7c0-4672-a235-a865ffa6eef2_7afe9e29-04e0-49cb-a1fb-6e336adf0143_SRS-23-24-Trainees-2Feb24 (1).pdf"
     },
     {
       "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\ac5eaa0a-c272-4f35-8b3d-b3f20d5e2153_Session 2 (1).txt",
@@ -67,6 +79,10 @@
     {
       "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\d035f710-4a92-4d36-b195-e083272f870e_Untitled 1.ods",
       "PackagePath": "staticwebassets\\Uploads\\d035f710-4a92-4d36-b195-e083272f870e_Untitled 1.ods"
+    },
+    {
+      "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\d322d778-dd70-4ad1-96f0-d0c1f6f73390_d035f710-4a92-4d36-b195-e083272f870e_Untitled 1 (2).ods",
+      "PackagePath": "staticwebassets\\Uploads\\d322d778-dd70-4ad1-96f0-d0c1f6f73390_d035f710-4a92-4d36-b195-e083272f870e_Untitled 1 (2).ods"
     },
     {
       "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\e068b2bc-60cd-44ad-80dd-e041c257a3d1_TestFiles-2024_02_21-18_47_08.zip",
@@ -115,6 +131,10 @@
     {
       "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\css\\Patient_request.css",
       "PackagePath": "staticwebassets\\css\\Patient_request.css"
+    },
+    {
+      "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\css\\ViewCase.css",
+      "PackagePath": "staticwebassets\\css\\ViewCase.css"
     },
     {
       "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\css\\site.css",

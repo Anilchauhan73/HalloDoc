@@ -30,37 +30,30 @@
                     <td>@client.Street, @client.City, @client.State, @client.ZipCode</td>
                     <td>@client.Notes</td>
                     <td>
-                        <button class="btn adminButton whiteFont">Provider</button>
+
+                        <button class="btn adminButton whiteFont"> <i class="bi bi-person mr-1 icn"></i> &nbsp; Provider</button>
                         
                     </td>
                     <td>
-                      @*  <div class="dropdown">
+                        <div class="dropdown">
                             <button class="btn dropdown-toggle adminButton whiteFont" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Actions
                             </button>
                             <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" type="button"><i class="bi bi-list-check"></i> &nbsp; Assign Case</button></li>
+                                <li><button class="dropdown-item" type="button">  <i class="bi bi-card-text  icn"></i> &nbsp; Assign Case </button></li>
                                 <li><button class="dropdown-item" type="button"><i class="bi bi-x-circle"></i> &nbsp; Cancel Case</button></li>
-                                <li><button class="dropdown-item" type="button">View Case</button></li>
-                                <li><button class="dropdown-item" type="button">View Notes</button></li>
-                                <li><button class="dropdown-item" type="button">Block Patient</button></li>
+                                <li><button class="dropdown-item" type="button"> <a asp-action="ViewCase" asp-controller="Admin" asp-route-reqid="@client.RequestClientId" class="text-decoration-none text-black"> <i class="bi bi-list-check"></i> &nbsp; View Case</a></button></li>
+                                <li><button class="dropdown-item" type="button">  <i class="bi bi-calendar2-minus icn"></i>  &nbsp; View Notes</button></li>
+                                <li><button class="dropdown-item" type="button"> <i class="bi bi-person icn"></i> &nbsp; Block Patient</button></li>
+                           
                             </ul>
-                        </div>*@
-
-
-                        <div class="d-flex align-items-center col-sm-6">
-                            <select class="lightButton">
-                                <option value="">&nbsp; Assign Case</option>
-                                <option value="India"> &nbsp; Cancel Case</option>
-                                <option value="America">View Case</option>
-                                <option value="Australia">View Notes</option>
-                                <option value="Australia">Block Patient</option>
-                            </select>
+                           
                         </div>
 
-                       
-                    
 
+           
+
+                       
                     </td>
                 </tr>
             }
@@ -98,7 +91,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="d-flex justify-content-end align-items-center mb-3">
-                                       @* <div class="mx-2">@myHashMap[@client.Request.RequestTypeId]</div>
+                                        @*<div class="mx-2">@myHashMap[@client.Request.RequestTypeId]</div>
                                         <div class="style_@client.Request.RequestTypeId rounded-circle"></div>*@
                                     </div>
                                     <div class="d-flex justify-content-end">

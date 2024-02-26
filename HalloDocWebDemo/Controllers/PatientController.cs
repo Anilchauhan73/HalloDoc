@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using HalloDocServices.Interfaces;
 using HalloDocServices.ViewModels;
-
-
+using HalloDocRepository.DataModels;
+using HalloDocServices.Implementation;
 
 namespace HalloDocWebDemo.Controllers
 {
@@ -95,7 +95,35 @@ namespace HalloDocWebDemo.Controllers
             return File(download, "application/zip", "RequestFiles.zip");
         }
 
-      
+        //public IActionResult PatientProfile(string reqid , PatientProfile profile)
+        //{
+        //    var data = _PatientRequestService.ProfileData(reqid , profile);
+        //    return View(data);
+        //}
+
+        //public IActionResult PatientProfile1(PatientProfile profile)
+        //{
+        //    var Email = HttpContext.Session.GetString("Email");
+        //    _PatientRequestService.PatientProfile1(profile, Email);
+        //    return RedirectToAction("PatientProfile", "Patient");
+        //}
+
+        public IActionResult PatientProfile()
+        {
+            var email = HttpContext.Session.GetString("Email");
+            var data = _PatientRequestService.ProfileService(email);
+            return View(data);
+        }
+
+        public IActionResult PaProfile (PatientProfile model)
+        {
+            var email = HttpContext.Session.GetString("Email");
+            _PatientRequestService.PaProfile(email, model);
+            return RedirectToAction("PatientProfile", "Patient");
+        }
+
+
+
 
 
 

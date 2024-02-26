@@ -10,8 +10,9 @@ namespace HalloDocServices.Interfaces
         void CreateFamilyRequest(Familyrequest model);
         void CreatePatientRequest(Patientrequest patientRequest);
         Task<byte[]> DownLoadAll(int requestid);
-     
+        void PaProfile(string email, PatientProfile model);
         PatientDashboard PatientDashboard(PatientDashboard dashboard , string email);
+        User ProfileService(string Email);
 
         ViewDocument ViewDocument(int id);
 

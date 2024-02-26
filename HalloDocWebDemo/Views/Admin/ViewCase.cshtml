@@ -1,0 +1,154 @@
+﻿@model HalloDocServices.Admin.ViewCase;
+@{
+    Layout = "";
+}
+@{
+    ViewData["Title"] = "ViewCase";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Case</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/ViewCase.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class=" d-flex justify-content-between">
+        <div>
+            <img class="hallodoc-logo img-fluid" src="/images/Fig56. Patient site 1.png" alt="HalloDoc Logo">
+        </div>
+
+        <div>
+            <span class="header-text d-none d-md-inline">Welcome <strong>Admin Admin2</strong></span>
+            <span class="logoutBtn px-2 py-2 m-2 text-decoration-none">
+                <i class="bi bi-box-arrow-right me-2"></i>
+                <span class="d-md-inline d-none"> Logout</span>
+            </span>
+            <img class="moon-icon px-3 py-2 m-2" src="/images/moon.svg" alt="Moon">
+        </div>
+    </header>
+
+    <div class="tab ">
+        <button class="tablinks mx-3" onclick="openPage(event, 'dashboard')">Dashboard</button>
+        <button class="tablinks mx-3" onclick="openPage(event, 'Provider Location')">Provider Location</button>
+        <button class="tablinks mx-3" onclick="openPage(event, 'My Profile')">My Profile</button>
+        <button class="tablinks mx-3" onclick="openPage(event, 'Providers')">Providers</button>
+        <button class="tablinks mx-3" onclick="openPage(event, 'Partners')">Partners</button>
+        <button class="tablinks mx-3" onclick="openPage(event, 'Access')">Access</button>
+        <button class="tablinks mx-3" onclick="openPage(event, 'Records')">Records</button>
+    </div>
+
+    <form asp-action="ViewCase">
+    <div class="container mt-5">
+        <div class="main d-flex justify-content-between ">
+            <div class="patient ">
+                <span class="fs-3 fw-bold">New Request</span>
+                <button class=" btn btn-success mx-3 rounded-3"> Patient</button>
+            </div>
+            <div>
+                <i class="lt text-primary back-btn"><a asp-action="AdminDashboard" asp-controller="Admin" class="text-decoration-none">&lt;Back</a></i>
+            </div>
+
+        </div>
+        <div class="main-content mt-3 shadow border-2">
+            
+            <h4 class="ms-4 mt-5">Patient Information</h4>
+
+            <h6 class="ms-4 mt-3">Confirmation Number</h6>
+            <span class="text-primary ms-4 fw-bold">MD120516555212</span>
+
+            <div class="row">
+                <div class="col mt-4 mx-4" >
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Enter Brief details of symptoms(Optional)" id="floatingTextarea2" style="height: 100px" disabled></textarea>
+                        <label for="floatingTextarea2">Patient Notes</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mt-3 mx-3">
+                <div class=" col-md-6 form-floating mb-3 ">
+                    <input asp-for="FirstName" type="text" class="form-control " id="floatingInput" placeholder="Your First Name" disabled>
+                    <label for="floatingInput"> First Name</label>
+                </div>
+                <div class=" col-md-6 form-floating">
+                        <input asp-for="LastName"  type="text" class="form-control" id="floatingPassword" placeholder="Your Last Name" disabled>
+                    <label for="floatingPassword"> Last Name</label>
+                </div>
+            </div>
+
+            <div class="row mt-3 mx-3">
+                <div class=" col-md-6 form-floating">
+                        <input asp-for="BirthDate" type="date" class="form-control" id="floatingPassword" placeholder="Date of Birth" disabled>
+                    <label for="floatingPassword">Date of birth</label>
+                </div>
+
+                <div class=" col-md-6 form-floating mb-3">
+                        <input asp-for="PhoneNumber" type="number" class="form-control mobile" id="mobile" placeholder="(201) 555-0123" disabled>
+                    <label for="mobile"></label>
+                </div>
+            </div>
+
+            <div class="row mt-3 mx-3">
+                <div class=" col-md-6 form-floating mb-3">
+                        <input asp-for="Email" type="password" class="form-control" id="floatingPassword" placeholder="Your Email" disabled>
+                    <label for="floatingPassword"> Email</label>
+                </div>
+            </div>
+
+            <h4 class=" mt-3 ms-4">Location  Information</h4>
+
+            <div class="row mt-3 mx-3">
+                <div class=" col-md-6 form-floating mb-3">
+                        <input asp-for="Region" type="text" class="form-control" id="floatingPassword" placeholder="Date of Birth" disabled>
+                    <label for="floatingPassword">Region</label>
+                </div>
+                <div class=" col-md-6 form-floating mb-3">
+                        <input asp-for="BusinessName" type="text" class="form-control" id="floatingPassword" placeholder="Your Email" disabled>
+                    <label for="floatingPassword"> Business Name / Address</label>
+                </div>
+            </div>
+
+            <div class="row mt-3 mx-3">
+                <div class=" col-md-6 form-floating mb-3">
+                        <input asp-for ="Room" type="text" class="form-control" id="floatingPassword" placeholder="Room#" disabled>
+                    <label for="floatingPassword">Room #</label>
+                </div>
+
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-primary mx-3 my-3">Assign</button>
+                <button class="btn btn-primary mx-3 my-3">View Notes</button>
+                <button class="btn btn-danger mx-3 my-3">Cancel</button>
+
+
+            </div>
+
+        </div>
+    </div>
+    </form>
+
+</body>
+
+<script>
+    const input = document.querySelector("#mobile");
+    window.intlTelInput(input, {
+        initialCounry: "auto",
+        geoIpLookup: function (callback) {
+            $.get('https://ipinfo.io', function () { }, "jsonp").always(function (resp) {
+                const countryCode = (resp && resp.country) ? resp.country : "us";
+                callback(countryCode);
+            });
+        }
+    });
+
+</script>
+</html>

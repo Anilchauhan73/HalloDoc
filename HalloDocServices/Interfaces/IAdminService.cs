@@ -1,9 +1,13 @@
-﻿using HalloDocServices.ViewModels;
+﻿using HalloDocRepository.DataModels;
+using HalloDocServices.Admin;
+using HalloDocServices.ViewModels;
 
 namespace HalloDocServices.Interfaces
 {
     public interface IAdminService
     {
-        //DashboardDetails RequestedData();
+        List<RequestClient> newDashboard();
+        List<RequestClient> pendingDashboard();
+        ViewCase ViewCase(int reqid);
     }
 }
