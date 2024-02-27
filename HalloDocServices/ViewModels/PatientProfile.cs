@@ -25,11 +25,5 @@ namespace HalloDocServices.ViewModels
 
         public String BirthDate { get; set; }
 
-
-
-
-
-
-
     }
 }

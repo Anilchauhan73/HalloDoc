@@ -6,8 +6,9 @@
     "\\HalloDocWebDemo",
     "\\HalloDocWebDemo\\Controllers",
     "\\HalloDocWebDemo\\Views",
-    "\\HalloDocWebDemo\\Views\\Admin"
+    "\\HalloDocWebDemo\\Views\\Admin",
+    "\\HalloDocWebDemo\\Views\\Patient"
   ],
-  "SelectedNode": "\\HalloDocServices\\Implementation\\PatientRequestService.cs",
+  "SelectedNode": "\\HalloDocWebDemo\\Views\\Patient\\PatientProfile.cshtml",
   "PreviewInSolutionExplorer": false
 }

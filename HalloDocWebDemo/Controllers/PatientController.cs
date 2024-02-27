@@ -29,8 +29,7 @@ namespace HalloDocWebDemo.Controllers
 
         public IActionResult CreatePatientRequest(Patientrequest patientrequest)
         {
-          
-                
+            
                 _PatientRequestService.CreatePatientRequest(patientrequest);
                 return RedirectToAction("Index", "Home");
 
@@ -70,11 +69,16 @@ namespace HalloDocWebDemo.Controllers
 
 
 
-        public IActionResult PatientDashboard(PatientDashboard dashboard)
+        public IActionResult PatientDashboard(PatientDashboard dashboard,string email)
         {
 
-             var userEmail = HttpContext.Session.GetString("userEmail");
-             var userData =  _PatientRequestService.PatientDashboard(dashboard, userEmail);
+             
+            var email1 = HttpContext.Session.GetString("userEmail");
+            if(email1 == null)
+            {
+                HttpContext.Session.SetString("userEmail", email);
+            }
+            var userData =  _PatientRequestService.PatientDashboard(dashboard, email1);
               
                
             return View(userData);
@@ -95,39 +99,21 @@ namespace HalloDocWebDemo.Controllers
             return File(download, "application/zip", "RequestFiles.zip");
         }
 
-        //public IActionResult PatientProfile(string reqid , PatientProfile profile)
-        //{
-        //    var data = _PatientRequestService.ProfileData(reqid , profile);
-        //    return View(data);
-        //}
-
-        //public IActionResult PatientProfile1(PatientProfile profile)
-        //{
-        //    var Email = HttpContext.Session.GetString("Email");
-        //    _PatientRequestService.PatientProfile1(profile, Email);
-        //    return RedirectToAction("PatientProfile", "Patient");
-        //}
-
+       
+        [HttpGet]
         public IActionResult PatientProfile()
         {
-            var email = HttpContext.Session.GetString("Email");
+            var email = HttpContext.Session.GetString("userEmail");
             var data = _PatientRequestService.ProfileService(email);
             return View(data);
         }
 
-        public IActionResult PaProfile (PatientProfile model)
+        public IActionResult PaProfile(User model)
         {
-            var email = HttpContext.Session.GetString("Email");
+            var email = HttpContext.Session.GetString("userEmail");
             _PatientRequestService.PaProfile(email, model);
             return RedirectToAction("PatientProfile", "Patient");
         }
-
-
-
-
-
-
-
 
     }
 }

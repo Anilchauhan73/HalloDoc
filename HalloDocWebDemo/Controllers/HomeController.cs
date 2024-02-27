@@ -37,7 +37,7 @@ namespace HalloDocWebDemo.Controllers
         {
 
             HttpContext.Session.SetString("userEmail" , ViewModel.Email);
-
+            var userEmail = HttpContext.Session.GetString("userEmail");
             if (!ModelState.IsValid)
             {
               
@@ -53,7 +53,7 @@ namespace HalloDocWebDemo.Controllers
                 return View(ViewModel);
             }
 
-            return RedirectToAction("PatientDashboard", "Patient");
+            return RedirectToAction("PatientDashboard", "Patient", new { email = userEmail});
         }
 
         public IActionResult Patient_register()

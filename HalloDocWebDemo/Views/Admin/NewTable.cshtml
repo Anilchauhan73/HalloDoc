@@ -43,17 +43,12 @@
                                 <li><button class="dropdown-item" type="button">  <i class="bi bi-card-text  icn"></i> &nbsp; Assign Case </button></li>
                                 <li><button class="dropdown-item" type="button"><i class="bi bi-x-circle"></i> &nbsp; Cancel Case</button></li>
                                 <li><button class="dropdown-item" type="button"> <a asp-action="ViewCase" asp-controller="Admin" asp-route-reqid="@client.RequestClientId" class="text-decoration-none text-black"> <i class="bi bi-list-check"></i> &nbsp; View Case</a></button></li>
-                                <li><button class="dropdown-item" type="button">  <i class="bi bi-calendar2-minus icn"></i>  &nbsp; View Notes</button></li>
+                                <li><button class="dropdown-item" type="button"> <a asp-action="ViewNotes" asp-controller="Admin"  class="text-decoration-none text-black"> <i class="bi bi-calendar2-minus icn"></i> &nbsp; View Notes</a></button></li>
                                 <li><button class="dropdown-item" type="button"> <i class="bi bi-person icn"></i> &nbsp; Block Patient</button></li>
                            
                             </ul>
                            
                         </div>
-
-
-           
-
-                       
                     </td>
                 </tr>
             }

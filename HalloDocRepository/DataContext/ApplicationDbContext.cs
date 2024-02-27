@@ -427,7 +427,9 @@ public partial class ApplicationDbContext : DbContext
         {
             entity.HasKey(e => e.UserId).HasName("User_pkey");
 
-            entity.Property(e => e.UserId).UseIdentityAlwaysColumn();
+            entity.Property(e => e.UserId)
+                .UseIdentityAlwaysColumn()
+                .HasIdentityOptions(56L, null, null, null, null, null);
 
             entity.HasOne(d => d.AspNetUser).WithMany(p => p.UserAspNetUsers).HasConstraintName("User_AspNetUserId_fkey");
 

@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.Extensions.Primitives;
 using System.IO.Compression;
+using System.Net;
 using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -45,7 +46,6 @@ namespace HalloDocServices.Implementation
                     Id = Guid.NewGuid().ToString(),
                     UserName = model.FirstName + "_" + model.LastName,
                     Email = model.Email,
-
                     PhoneNumber = model.PhoneNumber,
                     CreatedDate = DateTime.Now,
                 };
@@ -57,7 +57,7 @@ namespace HalloDocServices.Implementation
 
             User user = new User
             {
-
+         
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
@@ -77,9 +77,11 @@ namespace HalloDocServices.Implementation
             _context.Users.Add(user);
             _context.SaveChanges();
 
+           
+
             Request request = new Request
             {
-
+                UserId=user.UserId,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 PhoneNumber = model.PhoneNumber,
@@ -91,8 +93,27 @@ namespace HalloDocServices.Implementation
             };
 
             _context.Requests.Add(request);
+            _context.SaveChanges();
 
-
+            RequestClient requestClient = new RequestClient
+            {
+                RequestId = request.RequestId,
+                Notes = model.Symptoms,
+                FirstName= model.FirstName,
+                LastName= model.LastName,
+                PhoneNumber= model.PhoneNumber,
+                Email= model.Email,
+                Street= model.Street,
+                City = model.City,
+                State = model.State,
+                ZipCode = model.ZipCode,
+                IntDate = model.BirthDate.Day,
+                IntYear = model.BirthDate.Year,
+                StrMonth = (model.BirthDate.Month).ToString(),
+                Request = request,
+                
+            };
+            _context.RequestClients.Add(requestClient);
             _context.SaveChanges();
 
             foreach (var item in model.File)
@@ -125,6 +146,8 @@ namespace HalloDocServices.Implementation
             }
 
         }
+
+
 
 
         [HttpPost]
@@ -364,70 +387,17 @@ namespace HalloDocServices.Implementation
         }
        
 
-        //public PatientProfile ProfileData( PatientProfile profile , string Email)
-        //{
-        //    var user = _context.RequestClients.Where(u => u.Email == Email).FirstOrDefault();
-            
-        //    //DateTime dob = DateTime.ParseExact(user.IntYear.ToString() + "-" + user.StrMonth + "-" + user.IntDate.ToString(), "yyyy-M-d", System.Globalization.CultureInfo.InvariantCulture);
 
-        //    PatientProfile profile1 = new PatientProfile()
-        //    {
-        //        FirstName = user.FirstName,
-        //        LastName = user.LastName,
-        //        //BirthDate = dob.ToString("yyyy-MM-dd"),
-        //        Email = user.Email,
-        //        PhoneNumber = user.PhoneNumber,
-        //        Street = user.Street,
-        //        State = user.State,
-        //        City = user.City,
-        //        ZipCode = user.ZipCode,
-
-
-        //    };
-        //    return profile1;
-
-        //}
-
-        //public void PatientProfile1(PatientProfile profile, string Email)
-        //{
-        //    var data = _context.Users.Where(a => a.Email == Email).FirstOrDefault();
-
-        //    if (data.Email == profile.Email)
-        //    {
-        //        data.FirstName = profile.FirstName;
-        //        data.LastName = profile.LastName;
-        //        data.Email = profile.Email;
-        //        data.Mobile = profile.PhoneNumber;
-        //        data.Street = profile.Street;
-        //        data.City = profile.City;
-        //        data.State = profile.State;
-        //        data.ZipCode = profile.ZipCode;
-        //        data.ModifiedDate = DateTime.Now;
-
-        //        _context.Users.Add(data);
-        //        _context.SaveChanges();
-        //    }
-        //    else
-        //    {
-        //        AspNetUser aspnetuser = new AspNetUser()
-        //        {
-        //            UserName = profile.FirstName + " " + profile.LastName,
-        //            Email = profile.Email,
-        //            PhoneNumber = profile.PhoneNumber,
-        //            ModifiedDate = DateTime.Now,
-        //        };
-        //        _context.AspNetUsers.Add(aspnetuser);
-        //    }
-        //}
 
         public User ProfileService(string Email)
         {
             User data = _context.Users.Where(x => x.Email == Email).FirstOrDefault();
+           
             return data;
 
         }
 
-        public void PaProfile(string email, PatientProfile model)
+        public void PaProfile(string email, User model)
         {
             var userdata = _context.Users.Where(x => x.Email == email).FirstOrDefault();
 
@@ -436,7 +406,7 @@ namespace HalloDocServices.Implementation
 
                 userdata.FirstName = model.FirstName;
                 userdata.LastName = model.LastName;
-                userdata.Mobile = model.PhoneNumber;
+                userdata.Mobile = model.Mobile;
                 userdata.Email = model.Email;
                 userdata.Street = model.Street;
                 userdata.City = model.City;
@@ -454,15 +424,13 @@ namespace HalloDocServices.Implementation
                 {
                     UserName = model.FirstName + " " + model.LastName,
                     Email = model.Email,
-                    PhoneNumber = model.PhoneNumber,
+                    PhoneNumber = model.Mobile,
                     ModifiedDate = DateTime.Now,
 
                 };
 
                 _context.AspNetUsers.Add(aspnetuser);
             }
-
-
 
         }
 

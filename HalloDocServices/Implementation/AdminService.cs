@@ -43,6 +43,7 @@ namespace HalloDocServices.Implementation
         {
 
             var user = _context.RequestClients.FirstOrDefault(u => u.RequestClientId == reqid);
+            //var user1 = _context.RequestClients.Include(u => u.Region).Where(u => u.RegionId == reqid);
             DateTime dob = DateTime.ParseExact(user.IntYear.ToString() + "-" + user.StrMonth + "-" + user.IntDate.ToString(), "yyyy-M-d", System.Globalization.CultureInfo.InvariantCulture);
             ViewCase viewcase = new ViewCase()
             {
@@ -51,8 +52,6 @@ namespace HalloDocServices.Implementation
                 BirthDate = dob.ToString("yyyy-MM-dd"),
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
-
-
             };
             return viewcase;
      

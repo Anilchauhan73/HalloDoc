@@ -84,6 +84,12 @@ namespace HalloDocWebDemo.Controllers
             return View(data);
         }
 
+        public IActionResult ViewNotes()
+        {
+
+            return View();
+        }
+
 
 
 

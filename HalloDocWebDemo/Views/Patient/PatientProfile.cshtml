@@ -58,18 +58,18 @@
 
                         <div class="row mt-3 mx-2">
                             <div class=" col-md-6 form-floating mb-3">
-                                <input asp-for="FirstName" value="@Model.FirstName" type="text" class="form-control " id="floatingInput" placeholder=" First Name">
+                                <input asp-for="FirstName"  type="text" class="form-control " id="floatingInput" placeholder=" First Name">
                                 <label for="floatingInput"></label>
                             </div>
                             <div class=" col-md-6 form-floating">
-                                <input asp-for="LastName" value="@ViewBag.lname" type="text" class="form-control" id="floatingPassword" placeholder=" Last Name">
+                                <input asp-for="LastName" type="text" class="form-control" id="floatingPassword" placeholder=" Last Name">
                                 <label for="floatingPassword"></label>
                             </div>
                         </div>
 
                         <div class="row mt-3 mx-2">
                             <div class="col-md-6 form-floating mb-3">
-                                <input asp-for="BirthDate" value="@ViewBag.dob" id="dob" class="form-control" placeholder="Date Of Birth">
+                                <input asp-for="CreatedDate"  id="dob" class="form-control" placeholder="Date Of Birth">
                                 <label for="dob"></label>
                             </div>
                         </div>
@@ -87,10 +87,10 @@
                                 </select>
                             </div>
                             <div class="col-md-4 form-floating mb-3">
-                                <input asp-for="PhoneNumber" type="text" id="contact" class="form-control country-code" placeholder="@ViewBag.pnumber">
+                                <input asp-for="Mobile" type="text" id="contact" class="form-control country-code" placeholder="">
                             </div>
                             <div class="col-md-6 form-floating mb-3">
-                                <input  asp-for="Email" value="@ViewBag.email" type="text" id="email" class="form-control" placeholder="Email">
+                                <input  asp-for="Email" type="text" id="email" class="form-control" placeholder="Email">
                                 <label for="email"></label>
                             </div>
                         </div>
@@ -100,19 +100,19 @@
 
                         <div class="row mt-3 mx-2">
                             <div class="col-md-6 form-floating mb-2">
-                                <input asp-for="Street" value="@ViewBag.street" type="text" id="street" class="form-control" placeholder="Street">
+                                <input asp-for="Street"  type="text" id="street" class="form-control" placeholder="Street">
                                 <label for="street"></label>
                             </div>
                             <div class="col-md-6 form-floating">
-                                <input asp-for="City" value="@ViewBag.city" type="text" id="city" class="form-control" placeholder="City">
+                                <input asp-for="City" type="text" id="city" class="form-control" placeholder="City">
                                 <label for="city"></label>
                             </div>
                             <div class="col-md-6 py-2 form-floating">
-                                <input asp-for="State" value="@ViewBag.state" type="text" id="state" class="form-control" placeholder="State">
+                                <input asp-for="State" type="text" id="state" class="form-control" placeholder="State">
                                 <label for="state"></label>
                             </div>
                             <div class="col-md-6 py-2 form-floating">
-                                <input asp-for="ZipCode" value="@ViewBag.zipcode" type="text" id="zip-code" class="form-control" placeholder="Zip code">
+                                <input asp-for="ZipCode"  type="text" id="zip-code" class="form-control" placeholder="Zip code">
                                 <label for="zip-code"></label>
                             </div>
                         </div>
