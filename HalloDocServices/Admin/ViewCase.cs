@@ -9,7 +9,7 @@ namespace HalloDocServices.Admin
 {
     public  class ViewCase
     {
-        public  string Notes { get; set; }
+        public  string PatientNotes { get; set; }
 
         public  string FirstName { get; set; }
 

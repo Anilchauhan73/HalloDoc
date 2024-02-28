@@ -9,6 +9,7 @@ namespace HalloDocServices.Admin
 {
     public class DashboardDetails
     {
+        public int? bgcolor { get; set; }
 
         public int? newRequest { get; set; }
 

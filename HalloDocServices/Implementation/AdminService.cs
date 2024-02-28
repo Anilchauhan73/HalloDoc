@@ -33,6 +33,7 @@ namespace HalloDocServices.Implementation
             return newRequest;
         }
 
+
         public List<RequestClient> pendingDashboard()
         {
             List<RequestClient> pendingRequest = _context.RequestClients.Include(u => u.Request).Where(u => u.Request.Status == 2).Include(u => u.Request.Physician).ToList();
@@ -43,10 +44,10 @@ namespace HalloDocServices.Implementation
         {
 
             var user = _context.RequestClients.FirstOrDefault(u => u.RequestClientId == reqid);
-            //var user1 = _context.RequestClients.Include(u => u.Region).Where(u => u.RegionId == reqid);
             DateTime dob = DateTime.ParseExact(user.IntYear.ToString() + "-" + user.StrMonth + "-" + user.IntDate.ToString(), "yyyy-M-d", System.Globalization.CultureInfo.InvariantCulture);
             ViewCase viewcase = new ViewCase()
             {
+                PatientNotes = user.Notes,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 BirthDate = dob.ToString("yyyy-MM-dd"),
@@ -55,6 +56,31 @@ namespace HalloDocServices.Implementation
             };
             return viewcase;
      
+        }
+
+        public ViewNotes ViewNotes()
+        {
+            var user = _context.RequestNotes.FirstOrDefault();
+            ViewNotes viewnotes = new ViewNotes()
+            {
+                PhysicianNotes = user.PhysicianNotes,
+                AdminNotes = user.AdminNotes,
+
+            };
+            return viewnotes;
+        }
+
+        public void Addnote( ViewNotes model)
+        {
+            var notes = _context.RequestNotes.FirstOrDefault();
+         
+            notes.AdminNotes = model.AdminNotes;
+         
+            
+           _context.RequestNotes.Update(notes);
+
+           _context.SaveChanges();
+           
         }
     }
 }

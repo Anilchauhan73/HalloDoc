@@ -1344,6 +1344,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\1bff3fe5-92be-4c52-a874-463df017fd6e_HalloDoc - DB.xlsx))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\1c6cec4c-46d8-4af9-a564-4fe66d22295f_.net-Whole-Plane-2024.pdf (1) (1)))">
+      <SourceType>Package</SourceType>
+      <SourceId>HalloDocWebDemo</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/HalloDocWebDemo</BasePath>
+      <RelativePath>Uploads/1c6cec4c-46d8-4af9-a564-4fe66d22295f_.net-Whole-Plane-2024.pdf (1) (1)</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\1c6cec4c-46d8-4af9-a564-4fe66d22295f_.net-Whole-Plane-2024.pdf (1) (1)))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\1e2e9073-5f0d-47e8-ab00-9d6c2a87e869_Tatva_training-master (3).zip))">
       <SourceType>Package</SourceType>
       <SourceId>HalloDocWebDemo</SourceId>
@@ -1664,6 +1680,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\8948e56c-d3aa-4a1e-86fc-19a666ed09a1_0e1f116a-bbd0-4d68-9a6e-3c1585644f3b_MVC (1).pdf))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\916299e7-6dbb-4d57-85a1-10e853b1f542_.net-Whole-Plane-2024.pdf (1) (1)))">
+      <SourceType>Package</SourceType>
+      <SourceId>HalloDocWebDemo</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/HalloDocWebDemo</BasePath>
+      <RelativePath>Uploads/916299e7-6dbb-4d57-85a1-10e853b1f542_.net-Whole-Plane-2024.pdf (1) (1)</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\916299e7-6dbb-4d57-85a1-10e853b1f542_.net-Whole-Plane-2024.pdf (1) (1)))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\9c2936f5-50a8-4ea1-a066-73d7cd8dd7d0_Tatva_training-master (4).zip))">
       <SourceType>Package</SourceType>
       <SourceId>HalloDocWebDemo</SourceId>
@@ -1695,6 +1727,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\a32f2d53-43b8-49d7-a4ac-965c5c248757_Tatva_training-master (3).zip))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\a5ace3ed-7dc7-4ab7-b503-dceed62a3879_.net-Whole-Plane-2024.pdf (1) (1)))">
+      <SourceType>Package</SourceType>
+      <SourceId>HalloDocWebDemo</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/HalloDocWebDemo</BasePath>
+      <RelativePath>Uploads/a5ace3ed-7dc7-4ab7-b503-dceed62a3879_.net-Whole-Plane-2024.pdf (1) (1)</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\a5ace3ed-7dc7-4ab7-b503-dceed62a3879_.net-Whole-Plane-2024.pdf (1) (1)))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\a89afe43-b7c0-4672-a235-a865ffa6eef2_7afe9e29-04e0-49cb-a1fb-6e336adf0143_SRS-23-24-Trainees-2Feb24 (1).pdf))">
       <SourceType>Package</SourceType>
@@ -1775,6 +1823,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\be575a41-8189-48de-abf2-5fb659deac8d_Session 2 (1).txt))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\c983411d-d06b-4c8f-8a2f-ba80deb9ad72_.net-Whole-Plane-2024.pdf (1) (1)))">
+      <SourceType>Package</SourceType>
+      <SourceId>HalloDocWebDemo</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/HalloDocWebDemo</BasePath>
+      <RelativePath>Uploads/c983411d-d06b-4c8f-8a2f-ba80deb9ad72_.net-Whole-Plane-2024.pdf (1) (1)</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\c983411d-d06b-4c8f-8a2f-ba80deb9ad72_.net-Whole-Plane-2024.pdf (1) (1)))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Uploads\d035f710-4a92-4d36-b195-e083272f870e_Untitled 1.ods))">
       <SourceType>Package</SourceType>

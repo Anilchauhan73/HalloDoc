@@ -87,6 +87,7 @@ namespace HalloDocServices.Implementation
                 PhoneNumber = model.PhoneNumber,
                 Email = model.Email,
                 CreatedDate = DateTime.Now,
+                RequestTypeId = 1,
                 Status = 1,
                 IsUrgentEmailSent = '1',
                 User = user,
@@ -193,20 +194,7 @@ namespace HalloDocServices.Implementation
             };
 
             _context.Users.Add(user);
-
-            RequestClient requestfamily = new RequestClient
-            {
-
-                RequestId = 54645,
-                FirstName = model.YourFirstName,
-                LastName = model.YourLastName,
-                PhoneNumber = model.YourPhoneNumber,
-                Email = model.YourEmail,
-                State = model.RelationWithPatient,
-
-            };
-
-            _context.RequestClients.Add(requestfamily);
+            _context.SaveChanges();
 
             Request request = new Request
             {
@@ -216,6 +204,7 @@ namespace HalloDocServices.Implementation
                 PhoneNumber = model.PhoneNumber,
                 Email = model.Email,
                 CreatedDate = DateTime.Now,
+                RequestTypeId = 2,
                 Status = 1,
                 IsUrgentEmailSent = '1',
                 User = user,
@@ -224,6 +213,23 @@ namespace HalloDocServices.Implementation
             _context.Requests.Add(request);
             _context.SaveChanges();
 
+
+
+            RequestClient requestfamily = new RequestClient
+            {
+
+                RequestClientId = request.RequestId,
+                FirstName = model.YourFirstName,
+                LastName = model.YourLastName,
+                PhoneNumber = model.YourPhoneNumber,
+                Email = model.YourEmail,
+                State = model.RelationWithPatient,
+                Request = request,
+
+            };
+
+            _context.RequestClients.Add(requestfamily);
+            _context.SaveChanges();
 
             foreach (var item in model.File)
             {
@@ -278,8 +284,9 @@ namespace HalloDocServices.Implementation
                 CreatedBy = "Conceirge",
 
             };
-
+            
             _context.Users.Add(user);
+            _context.SaveChanges();
 
             Concierge concierge = new Concierge
             {
@@ -292,17 +299,10 @@ namespace HalloDocServices.Implementation
             };
 
             _context.Concierges.Add(concierge);
+            _context.SaveChanges();
 
-            RequestClient requestconceirge = new RequestClient
-            {
-                FirstName = model.YourFirstName,
-                LastName = model.YourLastName,
-                PhoneNumber = model.YourPhoneNumber,
-                Email = model.YourEmail,
 
-            };
 
-            _context.RequestClients.Add(requestconceirge);
 
             Request request = new Request
             {
@@ -312,12 +312,27 @@ namespace HalloDocServices.Implementation
                 PhoneNumber = model.YourPhoneNumber,
                 Email = model.YourEmail,
                 CreatedDate = DateTime.Now,
-                Status = 2,
+                Status = 1,
                 IsUrgentEmailSent = '1',
                 User = user,
             };
 
+
             _context.Requests.Add(request);
+            _context.SaveChanges();
+
+
+            RequestClient requestconceirge = new RequestClient
+            {
+                FirstName = model.YourFirstName,
+                LastName = model.YourLastName,
+                PhoneNumber = model.YourPhoneNumber,
+                Email = model.YourEmail,
+
+
+            };
+
+            _context.RequestClients.Add(requestconceirge);
             _context.SaveChanges();
 
         }

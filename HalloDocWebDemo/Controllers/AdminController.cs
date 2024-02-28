@@ -1,4 +1,5 @@
 ﻿using HalloDocRepository.DataContext;
+using HalloDocRepository.DataModels;
 using HalloDocServices.Admin;
 using HalloDocServices.Implementation;
 using HalloDocServices.Interfaces;
@@ -10,8 +11,7 @@ namespace HalloDocWebDemo.Controllers
     public class AdminController : Controller
     {
 
-    
-
+  
         private readonly IAdminService _AdminService;
         private readonly ApplicationDbContext _context;
    
@@ -86,8 +86,20 @@ namespace HalloDocWebDemo.Controllers
 
         public IActionResult ViewNotes()
         {
+            var data = _AdminService.ViewNotes();
+            return View(data);
+        }
 
-            return View();
+        public IActionResult Addnote(ViewNotes model)
+        {
+           
+            _AdminService.Addnote(model);
+            return RedirectToAction("AdminDashboard", "Admin");
+        }
+
+        public IActionResult CancelCase()
+        {
+            return PartialView();
         }
 
 

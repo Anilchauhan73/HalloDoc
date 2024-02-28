@@ -1,6 +1,9 @@
 ﻿@using System.Globalization;
 @model HalloDocServices.Admin.DashboardDetails;
 
+@{
+    var back = "";
+}
 <div class="table-responsive d-none d-md-block">
     <table class="table">
       
@@ -15,13 +18,31 @@
                 <th scope="col">Notes</th>
                 <th scope="col">Chat With</th>
                 <th scope="col">Actions</th>
+          
             </tr>
         </thead>
         <tbody class="whiteFont">
 
             @foreach (var client in Model.clients!)
             {
-                <tr class="style_@client.Request.RequestTypeId">
+                @if (@client.Request.RequestTypeId ==1)
+                {
+                    back = "bg-success";
+                }
+                @if (@client.Request.RequestTypeId == 2)
+                {
+                    back = "bg-warning";
+                }
+                @if (@client.Request.RequestTypeId == 3)
+                {
+                    back = "bg-primary";
+                }
+                @if (@client.Request.RequestTypeId == 4)
+                {
+                    back = "bg-secondary";
+                }
+              
+                <tr class="@back">
                     <td>@client.FirstName  @client.LastName</td>
                     <td>@client.StrMonth, @client.IntDate, @client.IntYear</td>
                     <td>@client.Request.FirstName @client.Request.LastName</td>
@@ -41,7 +62,7 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li><button class="dropdown-item" type="button">  <i class="bi bi-card-text  icn"></i> &nbsp; Assign Case </button></li>
-                                <li><button class="dropdown-item" type="button"><i class="bi bi-x-circle"></i> &nbsp; Cancel Case</button></li>
+                                <li><button id="myBtn" class="dropdown-item" type="button"><i class="bi bi-x-circle"></i> &nbsp; Cancel Case</button></li>
                                 <li><button class="dropdown-item" type="button"> <a asp-action="ViewCase" asp-controller="Admin" asp-route-reqid="@client.RequestClientId" class="text-decoration-none text-black"> <i class="bi bi-list-check"></i> &nbsp; View Case</a></button></li>
                                 <li><button class="dropdown-item" type="button"> <a asp-action="ViewNotes" asp-controller="Admin"  class="text-decoration-none text-black"> <i class="bi bi-calendar2-minus icn"></i> &nbsp; View Notes</a></button></li>
                                 <li><button class="dropdown-item" type="button"> <i class="bi bi-person icn"></i> &nbsp; Block Patient</button></li>
@@ -60,7 +81,7 @@
 
 <div class="d-block d-md-none">
 
-    @{
+@*    @{
         Dictionary<int, string> myHashMap = new Dictionary<int, string>()
     {
     {1,"Business"},
@@ -70,7 +91,7 @@
     {5,"VIP"},
 
     };
-    }
+    }*@
 
     @foreach (var client in Model.clients!)
     {
@@ -140,11 +161,36 @@
 </div>
 
 
-
 <script>
     $('.collapse').parent().find(".glyphicon-minus").removeClass("glyphicon-minus")
         .addClass("glyphicon-plus").css('color', 'green');
 
     $('.collapse').collapse('hide');
+    var modal = document.getElementById("myModal");
+
+    var btn = document.getElementById("myBtn");
+
+
+    var span = document.getElementsByClassName("close")[0];
+
+
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
 </script>
+
+
 
