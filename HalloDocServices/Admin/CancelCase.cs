@@ -10,5 +10,6 @@ namespace HalloDocServices.Admin
     {
 
         public string AdditionalNotes { get; set; }
+        public string PatientName { get; set; }
     }
 }

@@ -19,5 +19,14 @@ namespace HalloDocServices.Admin
 
         public List<RequestClient>? clients { get; set; }
 
+        public string? AdminNote { get; set; }
+
+        public int? RequestId { get; set; }
+
+        public string PatientName { get; set; }
+
+
+        public string AdditionalNote { get; set;}
+
     }
 }

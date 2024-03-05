@@ -79,11 +79,8 @@ namespace HalloDocWebDemo.Controllers
                 HttpContext.Session.SetString("userEmail", email);
             }
             var userData =  _PatientRequestService.PatientDashboard(dashboard, email1);
-              
-               
+            
             return View(userData);
-
-
         }
 
 

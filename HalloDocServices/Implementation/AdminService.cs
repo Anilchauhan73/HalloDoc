@@ -13,6 +13,7 @@ using System.IO;
 using System.Reflection.Emit;
 using System.Reflection;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HalloDocServices.Implementation
 {
@@ -23,7 +24,7 @@ namespace HalloDocServices.Implementation
         public AdminService(ApplicationDbContext context)
         {
             _context = context;
-           
+
 
         }
 
@@ -55,7 +56,7 @@ namespace HalloDocServices.Implementation
                 PhoneNumber = user.PhoneNumber,
             };
             return viewcase;
-     
+
         }
 
         public ViewNotes ViewNotes()
@@ -70,18 +71,61 @@ namespace HalloDocServices.Implementation
             return viewnotes;
         }
 
-        public void Addnote( ViewNotes model)
+        public void Addnote(ViewNotes model)
         {
             var notes = _context.RequestNotes.FirstOrDefault();
-         
             notes.AdminNotes = model.AdminNotes;
-         
-            
-           _context.RequestNotes.Update(notes);
 
-           _context.SaveChanges();
-           
+            _context.RequestNotes.Update(notes);
+
+            _context.SaveChanges();
+
         }
+
+
+        //public void CancleViewCase(int cancelid)
+        //{
+        //    DashboardDetails data = new();
+        //    Request request = _context.Requests.FirstOrDefault(x => x.RequestId == cancelid);
+        //    RequestNote rn = _context.RequestNotes.FirstOrDefault(x => x.RequestId == cancelid);
+        //    rn.AdminNotes = data.AdminNote;
+        //    request.Status = 3;
+
+        //    _context.RequestNotes.Update(rn);
+        //    _context.Requests.Update(request);
+        //    _context.SaveChanges();
+        //}
+
+        public DashboardDetails CancelCase(int id)
+        {
+            var user = _context.RequestClients.FirstOrDefault(x => x.RequestId == id);
+            DashboardDetails dashboarddetails = new DashboardDetails()
+            {
+                RequestId = user.RequestId,
+                PatientName = user.FirstName + " " + user.LastName,
+            };
+            return dashboarddetails;
+        }
+
+        public void CancelPatientRequest(DashboardDetails details, int id)
+        {
+            var patientRequest = _context.Requests.FirstOrDefault(u => u.RequestId == id);
+            patientRequest.Status = 3;
+            //patientRequest.CaseTag = details.CaseTagName;
+
+            var requestStatusLog = new RequestStatusLog
+            {
+                RequestId = id,
+                Status = 3,
+                Notes = details.AdditionalNote,
+                CreatedDate = DateTime.Now,
+            };
+            _context.Add(requestStatusLog);
+            _context.SaveChanges();
+
+        }
+
+
     }
 }
 

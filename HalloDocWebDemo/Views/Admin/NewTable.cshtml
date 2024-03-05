@@ -43,6 +43,7 @@
                 }
               
                 <tr class="@back">
+                   
                     <td>@client.FirstName  @client.LastName</td>
                     <td>@client.StrMonth, @client.IntDate, @client.IntYear</td>
                     <td>@client.Request.FirstName @client.Request.LastName</td>
@@ -61,11 +62,12 @@
                                 Actions
                             </button>
                             <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" type="button">  <i class="bi bi-card-text  icn"></i> &nbsp; Assign Case </button></li>
-                                <li><button id="myBtn" class="dropdown-item" type="button"><i class="bi bi-x-circle"></i> &nbsp; Cancel Case</button></li>
+                        
+                                <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#AssignCase">  <i class="bi bi-card-text  icn"></i> &nbsp; Assign Case </button></li>
+                                <li><button class="dropdown-item" type="button" onclick="cancel(@client.RequestId)"> <i class="bi bi-x-circle"></i> &nbsp; Cancel Case </button></li>
                                 <li><button class="dropdown-item" type="button"> <a asp-action="ViewCase" asp-controller="Admin" asp-route-reqid="@client.RequestClientId" class="text-decoration-none text-black"> <i class="bi bi-list-check"></i> &nbsp; View Case</a></button></li>
                                 <li><button class="dropdown-item" type="button"> <a asp-action="ViewNotes" asp-controller="Admin"  class="text-decoration-none text-black"> <i class="bi bi-calendar2-minus icn"></i> &nbsp; View Notes</a></button></li>
-                                <li><button class="dropdown-item" type="button"> <i class="bi bi-person icn"></i> &nbsp; Block Patient</button></li>
+                                <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#BlockModal"> <i class="bi bi-person icn"></i> &nbsp; Block Patient</button></li>
                            
                             </ul>
                            
@@ -78,6 +80,8 @@
         </tbody>
     </table>
 </div>
+
+
 
 <div class="d-block d-md-none">
 
@@ -161,6 +165,94 @@
 </div>
 
 
+
+<div class="modal" id="AssignCase" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content justify-content-center p-0">
+
+                <div class="justify-content-between d-flex bg-primary">
+                    <h4 class="text-white mt-2 ms-4">Assign Request</h4>
+                    <button type="button" class="btn-close mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><br>
+                <div style="padding:20px">
+                    <div class="d-inline-flex justify-content">
+                        <p>To assign this request,serach and select another Physician.</p>
+                    </div>
+                   @* <form method="post" asp-route-assignCaseId="@Model.AdminDashboardModel.RequestId">*@
+                        <select class="form-control">
+                            <option class="text-muted">Maryland</option>
+                            <option value="1">Iceland</option>
+                            <option value="2">Newzeland</option>
+                            <option value="2">Desneyland</option>
+                            <option value="3">Other</option>
+                        </select><br>
+                        <select class="form-control">
+                            <option class="text-muted">Select Physician</option>
+                            <option value="1">Anil</option>
+                            <option value="2">Bhaudik</option>
+                            <option value="3">Manish</option>
+                            <option value="4">Nirmal</option>
+                        </select><br>
+                        <textarea type="text" id="textarea" class="form-control" placeholder="Description">
+                                </textarea>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                   @* </form>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="BlockModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content justify-content-center p-0">
+
+                <div class="justify-content-between d-flex bg-primary">
+                    <h4 class="text-white mt-2 ms-4">Confirm Block </h4>
+                    <button type="button" class="btn-close mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><br>
+                <div style="padding:20px">
+
+                   @* <form method="post" asp-route-blockCaseId="@Model.AdminDashboardModel.RequestId">*@
+                        <div class="d-inline-flex justify-content">
+                            <h5> Patient Name : Anil Chauhan</h5>
+                           @* <h5>Patient Name :@Model.AdminDashboardModel.FirstName @Model.AdminDashboardModel.LastName</h5>*@
+                            <p></p>
+                        </div>
+                    
+                             <div class=" form-floating mb-3 border-dark rounded-3 shadow-sm mt-2 ">
+                                <textarea style="height: 150px;" type="text" id="textarea" class="form-control"
+                                          fs-1 placeholder="This is Admin Notes"></textarea>
+                                <label for="textarea"> Reason For Block Request</label>
+                            </div>
+          
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Confirm</button>
+                            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                  @*  </form>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="#cancelCase">
+
+</div>
+
+
+
+
 <script>
     $('.collapse').parent().find(".glyphicon-minus").removeClass("glyphicon-minus")
         .addClass("glyphicon-plus").css('color', 'green');
@@ -168,27 +260,23 @@
     $('.collapse').collapse('hide');
     var modal = document.getElementById("myModal");
 
-    var btn = document.getElementById("myBtn");
+    function cancel(request_id) {
+        $.ajax({
+            url: "/Admin/CancelCase/" + request_id,
+            type: "POST",
+            dataType: "html",
+            success: function (data) {
+                $("#cancelCase").html(data);
+                const myModal = new bootstrap.Modal("#cancleModal", {});
+                myModal.show();
+            },
+            error: function () {
+                alert("No Projects Found");
+                $("#cancelCase").html('An error has occurred');
+            }
+        });
+    };
 
-
-    var span = document.getElementsByClassName("close")[0];
-
-
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
 
 </script>
 

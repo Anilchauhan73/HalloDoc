@@ -97,10 +97,22 @@ namespace HalloDocWebDemo.Controllers
             return RedirectToAction("AdminDashboard", "Admin");
         }
 
-        public IActionResult CancelCase()
+        [HttpPost]
+        public IActionResult CancelCase(int id)
         {
-            return PartialView();
+            DashboardDetails details = _AdminService.CancelCase(id);
+            
+            return PartialView( "CancelCase" , details);
+           
         }
+
+        public IActionResult CancelCaseAction( DashboardDetails details , int id)
+        {
+             _AdminService.CancelPatientRequest(details, id);
+            return RedirectToAction("AdminDashboard", "Admin");
+        }
+
+
 
 
 

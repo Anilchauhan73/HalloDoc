@@ -2,15 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\HalloDocRepository",
-    "\\HalloDocRepository\\DataContext",
-    "\\HalloDocServices",
-    "\\HalloDocServices\\Implementation",
     "\\HalloDocWebDemo",
     "\\HalloDocWebDemo\\Controllers",
-    "\\HalloDocWebDemo\\Views",
-    "\\HalloDocWebDemo\\Views\\Admin",
-    "\\HalloDocWebDemo\\Views\\Patient"
+    "\\HalloDocWebDemo\\Views"
   ],
-  "SelectedNode": "\\HalloDocWebDemo\\Views\\Admin\\ViewCase.cshtml",
+  "SelectedNode": "\\HalloDocWebDemo\\Controllers\\PatientController.cs",
   "PreviewInSolutionExplorer": false
 }

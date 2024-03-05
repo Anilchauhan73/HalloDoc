@@ -534,3 +534,11 @@ D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\runtimes\unix\lib\net6.0\System.Dra
 D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\HalloDoc\HalloDocWebDemo\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
