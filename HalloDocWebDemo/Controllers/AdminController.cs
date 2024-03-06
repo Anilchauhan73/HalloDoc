@@ -27,6 +27,7 @@ namespace HalloDocWebDemo.Controllers
             DashboardDetails details = new DashboardDetails();
             details.newRequest = _AdminService.newDashboard().Count;
             details.pendingRequest = _AdminService.pendingDashboard().Count;
+            details.tocloseRequest = _AdminService.ToCloseDashboard().Count;    
             return View(details);
 
 
@@ -65,9 +66,9 @@ namespace HalloDocWebDemo.Controllers
 
         public IActionResult ToCloseTable()
         {
-            DashboardDetails details4 = new();
-            details4.clients = _context.RequestClients.Include(u => u.Request).Where(u => u.Request.Status == 5).ToList();
-            return PartialView(details4);
+            DashboardDetails details = new();
+            details.clients = _AdminService.ToCloseDashboard();
+            return PartialView(details);
         }
 
 
@@ -100,23 +101,31 @@ namespace HalloDocWebDemo.Controllers
         [HttpPost]
         public IActionResult CancelCase(int id)
         {
-            DashboardDetails details = _AdminService.CancelCase(id);
+            var details = _AdminService.AssignCase(id);
             
             return PartialView( "CancelCase" , details);
            
         }
 
-        public IActionResult CancelCaseAction( DashboardDetails details , int id)
+        public IActionResult CancelCaseAction(DashboardDetails details , int cancelid)
         {
-             _AdminService.CancelPatientRequest(details, id);
+             _AdminService.CancelPatientRequest(details, cancelid);
             return RedirectToAction("AdminDashboard", "Admin");
         }
 
+        public IActionResult _AssignCase( int id)
+        {
+            var details = _AdminService.AssignCase(id);
 
+            return PartialView("_AssignCase", details);
 
+        }
 
-
-
+        public IActionResult AssignCaseAction(DashboardDetails details , int assignid)
+        {
+            _AdminService.AssignCaseRequest(details, assignid);
+            return RedirectToAction("AdminDashboard", "Admin");
+        }
     }
 }
 

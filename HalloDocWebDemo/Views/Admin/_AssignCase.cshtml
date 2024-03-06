@@ -1,0 +1,46 @@
+﻿@model HalloDocServices.Admin.DashboardDetails;
+
+
+<div class="modal" id="AssignCase" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content justify-content-center p-0">
+
+                <div class="justify-content-between d-flex bg-primary">
+                    <h4 class="text-white mt-2 ms-4">Assign Request</h4>
+                    <button type="button" class="btn-close mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><br>
+                <div style="padding:20px">
+                    <div class="d-inline-flex justify-content">
+                        <p>To assign this request,serach and select another Physician.</p>
+                        @Model.PatientName
+                    </div>
+                    <form method="post" asp-action="AssignCaseAction" asp-route-assignid="@Model.RequestId">
+                    <select class="form-control">
+                        <option class="text-muted">Maryland</option>
+                        <option value="1">Iceland</option>
+                        <option value="2">Newzeland</option>
+                        <option value="2">Desneyland</option>
+                        <option value="3">Other</option>
+                    </select><br>
+                    <select class="form-control" asp-for="PhysicianName">
+                        <option class="text-muted">Select Physician</option>
+                        <option value="1">Anil</option>
+                        <option value="2">Bhaudik</option>
+                        <option value="3">Manish</option>
+                        <option value="4">Nirmal</option>
+                    </select><br>
+                    <textarea type="text" id="textarea" class="form-control" placeholder="Description">
+                                </textarea>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                     </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

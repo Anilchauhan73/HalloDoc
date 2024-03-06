@@ -1,4 +1,4 @@
-﻿@model HalloDocRepository.DataModels.AspNetUser;
+﻿@model HalloDocServices.ViewModels.Patienlogin;
 
 @{
     Layout = "";
@@ -21,7 +21,7 @@
         <i class="bi bi-moon-fill moon-icon" id="toggleTheme"></i>
 
     </div>
-    <form asp-action="Patient_login" asp-controller="Home">
+    <form methode = "post" asp-action="Patient_login" asp-controller="Home">
         <div class="center-content ">
 
             <div class=" main-content">
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="form-floating mb-2">
-                        <input asp-for="PasswordHash" type="password" class="form-control my-4" id="floatingPassword" placeholder="Password" required>
+                        <input asp-for="Passwordhash" type="password" class="form-control my-4" id="floatingPassword" placeholder="Password" required>
                         <label for="PasswordHash">Password</label>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="text-align-center justify-content-center d-flex">
-                    <a asp-controller="Home" asp-action="Forget_pass" class="text-primary text-decoration-none "> Forgot Password ? </a>
+                    <a asp-action="Forget_pass" asp-controller="Home" class="text-primary text-decoration-none "> Forgot Password ? </a>
                 </div>
             </div>
         </div>

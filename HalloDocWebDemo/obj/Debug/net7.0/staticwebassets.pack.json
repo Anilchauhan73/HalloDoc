@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\Uploads\\54365f7d-c523-45a9-b1df-95cf35b45497_.net-Whole-Plane-2024.pdf (1) (1)"
     },
     {
+      "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\5a114caf-e00a-44ca-8171-7d9824939b39_Untitled 1.ods",
+      "PackagePath": "staticwebassets\\Uploads\\5a114caf-e00a-44ca-8171-7d9824939b39_Untitled 1.ods"
+    },
+    {
+      "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\7408ef80-1712-48f6-aa43-5c3b57f54c94_dvdrental.tar",
+      "PackagePath": "staticwebassets\\Uploads\\7408ef80-1712-48f6-aa43-5c3b57f54c94_dvdrental.tar"
+    },
+    {
       "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\86663adf-adcb-4e5f-80f9-f4a7601b7091_GitPPT-Visual Studio New PPT (1)(1).pptm",
       "PackagePath": "staticwebassets\\Uploads\\86663adf-adcb-4e5f-80f9-f4a7601b7091_GitPPT-Visual Studio New PPT (1)(1).pptm"
     },
@@ -63,6 +71,10 @@
     {
       "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\images\\Accessdenied.webp",
+      "PackagePath": "staticwebassets\\images\\Accessdenied.webp"
     },
     {
       "Id": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\images\\Fig56. Patient site 1.png",

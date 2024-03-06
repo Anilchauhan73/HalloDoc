@@ -3,11 +3,14 @@ using HalloDocServices.Implementation;
 using HalloDocServices.Interfaces;
 using HalloDocServices.ViewModels;
 using HalloDocWebDemo.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace HalloDocWebDemo.Controllers
 {
+   
     public class HomeController : Controller
     {
         private readonly IPatientLoginServices _PatientLoginServices;
@@ -30,17 +33,23 @@ namespace HalloDocWebDemo.Controllers
         {
             return View();
         }
-   
+
+
+        public IActionResult Forget_pass()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public IActionResult Patient_login(Patienlogin ViewModel)
         {
 
-            HttpContext.Session.SetString("userEmail" , ViewModel.Email);
+            HttpContext.Session.SetString("userEmail", ViewModel.Email);
             var userEmail = HttpContext.Session.GetString("userEmail");
             if (!ModelState.IsValid)
             {
-              
+
                 return View(ViewModel);
             }
 
@@ -53,8 +62,9 @@ namespace HalloDocWebDemo.Controllers
                 return View(ViewModel);
             }
 
-            return RedirectToAction("PatientDashboard", "Patient", new { email = userEmail});
+            return RedirectToAction("PatientDashboard", "Patient", new { email = userEmail });
         }
+
 
         public IActionResult Patient_register()
         {
@@ -72,6 +82,11 @@ namespace HalloDocWebDemo.Controllers
         public IActionResult Error()
         {
             return View(new HalloDocServices.ViewModels.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

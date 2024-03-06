@@ -18,16 +18,12 @@
 
                 
                     
-                        <div class="d-inline-flex justify-content">
-                            <h5> Patient Name : Anil Chauhan @Model.PatientName</h5>
+                        <div class="d-inline-flex">
+                            <h5> Patient Name : @Model.PatientName</h5>
 
                         </div>
 
-
-
-
-
-                    <form method="post" asp-action=" CancelCaseAction" asp-controller="Admin">
+                    <form method="post" asp-action="CancelCaseAction" asp-route-cancelid="@Model.RequestId">
                             <select class="form-control">
                                 <option class="text-muted">Region For Cancellation</option>
                                 <option value="1">No Respone to call or text, left message</option>
@@ -38,8 +34,13 @@
                                 <option value="6">Referral to Clinic or Hospital</option>
 
                             </select><br>
-                        <textarea asp-for="AdditionalNote" type="text" id="textarea" class="form-control" placeholder="Provide Additional Notes">
-                                            </textarea>
+                     
+
+                        <div class=" form-floating mb-3 border-dark rounded-3 shadow-sm ">
+                            <textarea asp-for="AdditionalNote" style="height: 120px;" type="text" id="textarea" class="form-control"
+                                      fs-1 placeholder="Provide Additional Notes"></textarea>
+                            <label for="textarea">Provide Additional Notes</label>
+                        </div>
 
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Confirm</button>
@@ -49,16 +50,14 @@
 
                     </div>
 
-                </div>
-            
-                
+                </div>  
             </div>
 
 
         </div>
     </div>
     
-}
+
 
 
   

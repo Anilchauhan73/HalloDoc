@@ -79,4 +79,6 @@ public partial class AspNetUser
     [ForeignKey("UserId")]
     [InverseProperty("Users")]
     public virtual ICollection<AspNetRole> Roles { get; set; } = new List<AspNetRole>();
+
+    public string? Roleid { get; set; }
 }

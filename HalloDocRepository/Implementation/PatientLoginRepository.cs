@@ -25,9 +25,14 @@ public class PatientLoginRepository : IPatientloginRepository
 
    public bool Patient_login(string username, string password)
     {
-      
-      
-        return _context.AspNetUsers.Any(user => user.Email == username && user.PasswordHash == password);
+        AspNetUser user = _context.AspNetUsers.Where(user => user.Email == username && user.PasswordHash == password).FirstOrDefault();
+        if (user != null)
+        {
+            return true;
+        }
+        return false;
+
+        //return _context.AspNetUsers.Any(user => user.Email == username && user.PasswordHash == password);
       
     }
   

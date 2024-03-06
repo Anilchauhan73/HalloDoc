@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mfC07fx0NJyYCKfQa2Hqzwi2fww5/RUMsUXDkMDcV5c=",
+  "Hash": "0+71dDkGujPWO/U7ArIljYjHlYK5Wo+Ij1GQXa+vsD4=",
   "Source": "HalloDocWebDemo",
   "BasePath": "_content/HalloDocWebDemo",
   "Mode": "Default",
@@ -270,6 +270,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\images\\Accessdenied.webp",
+      "SourceId": "HalloDocWebDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\",
+      "BasePath": "_content/HalloDocWebDemo",
+      "RelativePath": "images/Accessdenied.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Accessdenied.webp"
     },
     {
       "Identity": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\images\\Fig56. Patient site 1.png",
@@ -1341,6 +1358,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Uploads\\54365f7d-c523-45a9-b1df-95cf35b45497_.net-Whole-Plane-2024.pdf (1) (1)"
+    },
+    {
+      "Identity": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\5a114caf-e00a-44ca-8171-7d9824939b39_Untitled 1.ods",
+      "SourceId": "HalloDocWebDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\",
+      "BasePath": "_content/HalloDocWebDemo",
+      "RelativePath": "Uploads/5a114caf-e00a-44ca-8171-7d9824939b39_Untitled 1.ods",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\5a114caf-e00a-44ca-8171-7d9824939b39_Untitled 1.ods"
+    },
+    {
+      "Identity": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\7408ef80-1712-48f6-aa43-5c3b57f54c94_dvdrental.tar",
+      "SourceId": "HalloDocWebDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\",
+      "BasePath": "_content/HalloDocWebDemo",
+      "RelativePath": "Uploads/7408ef80-1712-48f6-aa43-5c3b57f54c94_dvdrental.tar",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Uploads\\7408ef80-1712-48f6-aa43-5c3b57f54c94_dvdrental.tar"
     },
     {
       "Identity": "D:\\HalloDoc\\HalloDocWebDemo\\wwwroot\\Uploads\\86663adf-adcb-4e5f-80f9-f4a7601b7091_GitPPT-Visual Studio New PPT (1)(1).pptm",

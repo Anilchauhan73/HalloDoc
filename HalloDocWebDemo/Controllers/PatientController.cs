@@ -3,6 +3,7 @@ using HalloDocServices.Interfaces;
 using HalloDocServices.ViewModels;
 using HalloDocRepository.DataModels;
 using HalloDocServices.Implementation;
+using static HalloDocServices.Implementation.AuthManager;
 
 namespace HalloDocWebDemo.Controllers
 {
@@ -68,7 +69,7 @@ namespace HalloDocWebDemo.Controllers
 
 
 
-
+        //[CustomAuthorize("1")]
         public IActionResult PatientDashboard(PatientDashboard dashboard,string email)
         {
 

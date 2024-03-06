@@ -17,10 +17,14 @@ builder.Services.AddScoped<IPatientloginRepository,PatientLoginRepository>();
 builder.Services.AddScoped<IPatientLoginServices,PatientLoginServices>();
 builder.Services.AddScoped<IPatientRequestService,PatientRequestService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IAuthManager, AuthManager>();
+builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(5);
+    options.IdleTimeout = TimeSpan.FromMinutes(60);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });

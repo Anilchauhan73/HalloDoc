@@ -15,6 +15,8 @@ namespace HalloDocServices.Admin
 
         public int? pendingRequest { get; set; }
 
+        public int? tocloseRequest { get; set; }
+
         public int? activeRequest { get; set; }
 
         public List<RequestClient>? clients { get; set; }
@@ -23,10 +25,16 @@ namespace HalloDocServices.Admin
 
         public int? RequestId { get; set; }
 
-        public string PatientName { get; set; }
+        public string? PatientName { get; set; }
 
 
-        public string AdditionalNote { get; set;}
+        public string? AdditionalNote { get; set;}
+
+        public List<CaseTagModel>? ReasonForCancel { get; set; }
+
+        public List<CaseTag> reasons { get; set; }
+
+        public string? PhysicianName { get; set; }
 
     }
 }

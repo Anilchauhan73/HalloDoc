@@ -41,6 +41,12 @@ namespace HalloDocServices.Implementation
             return pendingRequest;
         }
 
+        public List<RequestClient> ToCloseDashboard()
+        {
+            List<RequestClient> tocloseRequest = _context.RequestClients.Include(u => u.Request).Where(u => u.Request.Status == 3).ToList();
+            return tocloseRequest;
+        }
+
         public ViewCase ViewCase(int reqid)
         {
 
@@ -83,18 +89,35 @@ namespace HalloDocServices.Implementation
         }
 
 
-        //public void CancleViewCase(int cancelid)
-        //{
-        //    DashboardDetails data = new();
-        //    Request request = _context.Requests.FirstOrDefault(x => x.RequestId == cancelid);
-        //    RequestNote rn = _context.RequestNotes.FirstOrDefault(x => x.RequestId == cancelid);
-        //    rn.AdminNotes = data.AdminNote;
-        //    request.Status = 3;
+        public DashboardDetails AssignCase(int id)
+        {
+            var user = _context.RequestClients.FirstOrDefault(x => x.RequestId == id);
+            DashboardDetails dashboarddetails = new DashboardDetails()
+            {
+                RequestId = user.RequestId,
+                PatientName = user.FirstName + " " + user.LastName,
+            };
+            return dashboarddetails;
+        }
 
-        //    _context.RequestNotes.Update(rn);
-        //    _context.Requests.Update(request);
-        //    _context.SaveChanges();
-        //}
+        
+        public void CancelPatientRequest(DashboardDetails details, int cancelid)
+        {
+            var patientRequest = _context.Requests.FirstOrDefault(u => u.RequestId == cancelid);
+            patientRequest.Status = 3;
+            //patientRequest.CaseTag = details.CaseTagName;
+
+            var requestStatusLog = new RequestStatusLog
+            {
+                RequestId = cancelid,
+                Status = 3,
+                Notes = details.AdditionalNote,
+                CreatedDate = DateTime.Now,
+            };
+            _context.Add(requestStatusLog);
+            _context.SaveChanges();
+
+        }
 
         public DashboardDetails CancelCase(int id)
         {
@@ -107,22 +130,36 @@ namespace HalloDocServices.Implementation
             return dashboarddetails;
         }
 
-        public void CancelPatientRequest(DashboardDetails details, int id)
+        public void AssignCaseRequest(DashboardDetails details, int assignid)
         {
-            var patientRequest = _context.Requests.FirstOrDefault(u => u.RequestId == id);
-            patientRequest.Status = 3;
-            //patientRequest.CaseTag = details.CaseTagName;
+            var patientRequest = _context.Requests.FirstOrDefault( u=> u.RequestId == assignid);
+            patientRequest.Status = 2;
 
-            var requestStatusLog = new RequestStatusLog
+
+            var physician = new Physician
             {
-                RequestId = id,
-                Status = 3,
-                Notes = details.AdditionalNote,
+                PhysicianId = assignid,
+                FirstName = details.PhysicianName,
+                LastName = details.PhysicianName,
                 CreatedDate = DateTime.Now,
+                Email = details.PhysicianName,
+                BusinessName = details.PhysicianName,
+                BusinessWebsite = details.PhysicianName,
+
             };
-            _context.Add(requestStatusLog);
+            _context.Add(physician);
             _context.SaveChanges();
 
+          
+            var Requestclient = new RequestClient
+            {
+                Request = patientRequest,
+                RequestClientId = patientRequest.RequestId,
+                FirstName = patientRequest.FirstName,
+
+            };
+            _context.Add(Requestclient);
+            _context.SaveChanges();
         }
 
 
