@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.Extensions.Primitives;
 using System.IO.Compression;
 using System.Net;
+using System.Net.Mail;
+using System.Security.Cryptography;
 using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -450,5 +452,41 @@ namespace HalloDocServices.Implementation
         }
 
 
+        private const int TokenExpirationMinutes = 15;
+
+        //public string GenerateToken()
+        //{
+        //    byte[] tokenBytes = new byte[32];
+        //    using (var rng = RandomNumberGenerator.Create())
+        //    {
+        //        rng.GetBytes(tokenBytes);
+        //    }
+
+        //    string token = Convert.ToBase64String(tokenBytes);
+
+        //    return token;
+        //}
+        //public void SendMail(SendMail details, string resetLink)
+        //{
+        //    var subject = "Password Reset Request";
+        //    var body = "<b>Please find the Password Reset Link.</b><br/>" + resetLink;
+
+        //    MailMessage mail = new();
+        //    mail.To.Add(details.Email!);
+        //    mail.From = new MailAddress("temp2713@outlook.com");
+        //    mail.Subject = subject;
+        //    mail.Body = body;
+        //    mail.IsBodyHtml = true;
+        //    var smtpClient = new SmtpClient
+        //    {
+        //        Host = "smtp.office365.com",
+        //        Port = 587,
+        //        UseDefaultCredentials = false,
+        //        EnableSsl = true,
+        //        Credentials = new NetworkCredential("temp2713@outlook.com", "Anil"),
+        //        DeliveryMethod = SmtpDeliveryMethod.Network
+        //    };
+        //    smtpClient.Send(mail);
+        //}
     }
 }

@@ -1,7 +1,7 @@
 ﻿
-
-//using HalloDocMVCRepository.Interface;
-//using HalloDocMVCServices.Interface;
+using HalloDocRepository.DataContext;
+using HalloDocRepository.DataModels;
+using HalloDocRepository.Interfaces;
 using HalloDocServices.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -12,88 +12,71 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using static HalloDocMVCServices.Implementation.JwtService;
 
-namespace HalloDocMVCServices.Implementation
+namespace HalloDocServices.Implementation
 {
     public class JwtService : IJwtService
     {
-        private readonly IConfiguration configuration;
-        private readonly IAspNetUserRepo _aspNetUserRepo;
-        public JwtService(IConfiguration configuration, IAspNetUserRepo aspNetUserRepo)
+        private readonly IConfiguration _configuration;
+        private readonly ApplicationDbContext _context;
+
+        public JwtService(IConfiguration configuration, ApplicationDbContext context)
         {
-            this.configuration = configuration;
-            _aspNetUserRepo = aspNetUserRepo;
+            _configuration = configuration;
+            _context = context;
         }
 
-        public string GenerateJWTAuthetication(string email)
+        public string GenerateJwtToken(AspNetUser model)
         {
-
-            string role = _aspNetUserRepo.FindRole(email);
-            var claims = new List<Claim>
-            {
-                new Claim(JwtHeaderParameterNames.Jku, email),
-                new Claim(ClaimTypes.Role,role),
-                new Claim(JwtHeaderParameterNames.Kid, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, email)
+            var UserRole = _context.AspNetRoles.FirstOrDefault(u => u.Id == model.Id);
+            string RoleId = UserRole.Id;
+            var claims = new List<Claim> {
+                new Claim(ClaimTypes.Email, model.Email!),
+                new Claim(ClaimTypes.Role, RoleId.ToString()),
+                new Claim("Id", model.Id.ToString()),
             };
 
-
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
             var expires = DateTime.UtcNow.AddMinutes(20);
 
-
             var token = new JwtSecurityToken(
-                configuration["Jwt:Issuer"],
-                configuration["Jwt:Audience"],
+                _configuration["Jwt:Issuer"],
+                _configuration["Jwt:Audience"],
                 claims,
                 expires: expires,
                 signingCredentials: creds
-            );
+                );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-
-
         }
 
         public bool ValidateToken(string token, out JwtSecurityToken jwtSecurityToken)
         {
             jwtSecurityToken = null;
 
-            if (token == null)
-                return false;
+            if (token == null) { return false; }
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(configuration["Jwt:Key"]);
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!);
             try
             {
                 tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key)
-,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ClockSkew = TimeSpan.Zero
-
                 }, out SecurityToken validatedToken);
-
-                // Corrected access to the validatedToken
-
 
                 jwtSecurityToken = (JwtSecurityToken)validatedToken;
 
-                if (jwtSecurityToken != null)
-                    return true;
+                if (jwtSecurityToken != null) return true;
 
                 return false;
             }
-            catch
-            {
-                return false;
-            }
+            catch { return false; }
         }
     }
 }

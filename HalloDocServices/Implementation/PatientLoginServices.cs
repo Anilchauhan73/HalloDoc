@@ -3,7 +3,8 @@ using HalloDocRepository.DataModels;
 using HalloDocServices.ViewModels;
 using HalloDocRepository.Interfaces;
 using Microsoft.AspNetCore.Http;
-
+using Microsoft.EntityFrameworkCore;
+using HalloDocRepository.DataContext;
 
 namespace HalloDocServices.Implementation
 {
@@ -14,27 +15,35 @@ namespace HalloDocServices.Implementation
 
         private IPatientloginRepository _PatientLoginRepository;
         private readonly IPatientLoginServices patientLoginServices;
+        private readonly ApplicationDbContext _context;
 
-        public PatientLoginServices(IPatientloginRepository PatientLoginRepository)
+        public PatientLoginServices(IPatientloginRepository PatientLoginRepository , ApplicationDbContext context)
         {
             _PatientLoginRepository = PatientLoginRepository;
+            _context = context;
         }
 
-        
-        public bool Patient_login(Patienlogin ViewModel)
+
+        public async Task<User> Patient_login(AspNetUser model)
         {
-            //Any business logic here before repository call
-            //Convert view model => DataModel Here
-            bool isValidUser = _PatientLoginRepository.Patient_login(ViewModel.Email, ViewModel.Passwordhash);
+            var aspnetuser = await _context.AspNetUsers.FirstOrDefaultAsync(u => u.Email == model.Email && u.PasswordHash == model.PasswordHash);
 
-            var users = _PatientLoginRepository.GetAllUsers();
-      
-
-            //var emailList = users.Select(x => x.Email);
-            return isValidUser;
+            if (aspnetuser != null)
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                return user!;
+            }
+            else
+            {
+                return null!;
+            }
         }
-          
 
-      
-    }    
+
+
+
+
+
+
+    }
 }

@@ -1,0 +1,37 @@
+﻿
+<div class="modal fade" id="BlockModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content justify-content-center p-0">
+
+                <div class="justify-content-between d-flex bg-primary">
+                    <h4 class="text-white mt-2 ms-4">Confirm Block </h4>
+                    <button type="button" class="btn-close mt-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div><br>
+                <div style="padding:20px">
+
+                    @* <form method="post" asp-route-blockCaseId="@Model.AdminDashboardModel.RequestId">*@
+                    <div class="d-inline-flex justify-content">
+                        <h5> Patient Name : @Model.PatientName</h5>
+                        @* <h5>Patient Name :@Model.AdminDashboardModel.FirstName @Model.AdminDashboardModel.LastName</h5>*@
+                        <p></p>
+                    </div>
+
+                    <div class=" form-floating mb-3 border-dark rounded-3 shadow-sm mt-2 ">
+                        <textarea style="height: 150px;" type="text" id="textarea" class="form-control"
+                                  fs-1 placeholder="This is Admin Notes"></textarea>
+                        <label for="textarea"> Reason For Block Request</label>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Confirm</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                    @*  </form>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

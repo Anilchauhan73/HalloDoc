@@ -13,17 +13,17 @@
                 <div style="padding:20px">
                     <div class="d-inline-flex justify-content">
                         <p>To assign this request,serach and select another Physician.</p>
-                        @Model.PatientName
+                     
                     </div>
                     <form method="post" asp-action="AssignCaseAction" asp-route-assignid="@Model.RequestId">
-                    <select class="form-control">
+                    <select class="form-control" asp-for="PhysicianName">
                         <option class="text-muted">Maryland</option>
                         <option value="1">Iceland</option>
                         <option value="2">Newzeland</option>
                         <option value="2">Desneyland</option>
                         <option value="3">Other</option>
                     </select><br>
-                    <select class="form-control" asp-for="PhysicianName">
+                    <select class="form-control">
                         <option class="text-muted">Select Physician</option>
                         <option value="1">Anil</option>
                         <option value="2">Bhaudik</option>

@@ -36,5 +36,9 @@ namespace HalloDocServices.Admin
 
         public string? PhysicianName { get; set; }
 
+        public int PhysicianId { get; set; }
+
+        public string? Description { get; set; }
+
     }
 }

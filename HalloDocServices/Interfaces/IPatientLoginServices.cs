@@ -10,7 +10,7 @@ namespace HalloDocServices.Interfaces
 {
     public interface IPatientLoginServices
     {
-        bool Patient_login(Patienlogin ViewModel);
+        Task<User> Patient_login(AspNetUser model);
     }
 }
 

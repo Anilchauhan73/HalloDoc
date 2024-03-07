@@ -41,6 +41,9 @@
                 </div>
                 <div class="d-grid mb-5">
                     <button class="btn btn-primary login" type="submit">Log In </button>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
                 </div>
 
                 <div class="text-align-center justify-content-center d-flex">
@@ -55,5 +58,15 @@
     </div>
 
 </body>
+
+<script>
+    togglePassword.addEventListener("click", function () {
+
+        const type = PasswordHash.getAttribute("type") === "password" ? "text" : "password";
+        PasswordHash.setAttribute("type", type);
+
+        this.classList.toggle("bi-eye");
+    });
+</script>
 
 </html>

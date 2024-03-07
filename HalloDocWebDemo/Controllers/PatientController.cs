@@ -3,7 +3,7 @@ using HalloDocServices.Interfaces;
 using HalloDocServices.ViewModels;
 using HalloDocRepository.DataModels;
 using HalloDocServices.Implementation;
-using static HalloDocServices.Implementation.AuthManager;
+using HalloDocWebDemo.Auth;
 
 namespace HalloDocWebDemo.Controllers
 {
@@ -30,9 +30,9 @@ namespace HalloDocWebDemo.Controllers
 
         public IActionResult CreatePatientRequest(Patientrequest patientrequest)
         {
-            
-                _PatientRequestService.CreatePatientRequest(patientrequest);
-                return RedirectToAction("Index", "Home");
+
+            _PatientRequestService.CreatePatientRequest(patientrequest);
+            return RedirectToAction("Index", "Home");
 
         }
 
@@ -51,7 +51,7 @@ namespace HalloDocWebDemo.Controllers
             return RedirectToAction("Index", "Home");
 
         }
-
+        [CustomAuthorize("2")]
         public IActionResult Conceirge_request()
         {
             return View();
@@ -69,7 +69,7 @@ namespace HalloDocWebDemo.Controllers
 
 
 
-        //[CustomAuthorize("1")]
+        [CustomAuthorize("3")]
         public IActionResult PatientDashboard(PatientDashboard dashboard,string email)
         {
 
@@ -84,7 +84,7 @@ namespace HalloDocWebDemo.Controllers
             return View(userData);
         }
 
-
+        [CustomAuthorize("2")]
         public IActionResult ViewDocument(int id)
         {
             var data = _PatientRequestService.ViewDocument(id);
@@ -97,7 +97,7 @@ namespace HalloDocWebDemo.Controllers
             return File(download, "application/zip", "RequestFiles.zip");
         }
 
-       
+        [CustomAuthorize("2")]
         [HttpGet]
         public IActionResult PatientProfile()
         {
@@ -112,6 +112,25 @@ namespace HalloDocWebDemo.Controllers
             _PatientRequestService.PaProfile(email, model);
             return RedirectToAction("PatientProfile", "Patient");
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Forgot(SendMail details)
+        //{
+        //    if (details.Email == null)
+        //    {
+        //        TempData["error"] = "Please Enter Valid Email";
+        //        return RedirectToAction("Forgot_pass", "Home");
+        //    }
+        //    var resetToken = _PatientRequestService.GenerateToken();
+        //    var resetLink = "<a href=" + Url.Action("Forgot_pass", "Home", new { email = details.Email, code = resetToken }, "https") + ">Reset Password</a>";
+
+        //    _PatientRequestService.SendMail(details, resetLink);
+           
+
+        //    TempData["success"] = "Email is sent successfully to your email account";
+        //    return RedirectToAction("Patient_login", "Home");
+        //}
 
     }
 }

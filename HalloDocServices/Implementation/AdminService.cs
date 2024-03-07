@@ -132,7 +132,7 @@ namespace HalloDocServices.Implementation
 
         public void AssignCaseRequest(DashboardDetails details, int assignid)
         {
-            var patientRequest = _context.Requests.FirstOrDefault( u=> u.RequestId == assignid);
+            var patientRequest = _context.Requests.FirstOrDefault(u => u.RequestId == assignid);
             patientRequest.Status = 2;
 
 
@@ -150,17 +150,9 @@ namespace HalloDocServices.Implementation
             _context.Add(physician);
             _context.SaveChanges();
 
-          
-            var Requestclient = new RequestClient
-            {
-                Request = patientRequest,
-                RequestClientId = patientRequest.RequestId,
-                FirstName = patientRequest.FirstName,
-
-            };
-            _context.Add(Requestclient);
-            _context.SaveChanges();
         }
+
+
 
 
     }

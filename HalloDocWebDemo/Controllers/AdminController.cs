@@ -14,12 +14,14 @@ namespace HalloDocWebDemo.Controllers
   
         private readonly IAdminService _AdminService;
         private readonly ApplicationDbContext _context;
-   
-        public AdminController(IAdminService AdminService, ApplicationDbContext context )
+        //private readonly IJwtService _jwtService;
+
+        public AdminController(IAdminService AdminService, ApplicationDbContext context)
         {
             _AdminService = AdminService;
             _context = context;
-           
+            //_jwtService = jwtService;
+
         }
 
         public IActionResult AdminDashboard()
@@ -98,7 +100,7 @@ namespace HalloDocWebDemo.Controllers
             return RedirectToAction("AdminDashboard", "Admin");
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult CancelCase(int id)
         {
             var details = _AdminService.AssignCase(id);
@@ -107,6 +109,7 @@ namespace HalloDocWebDemo.Controllers
            
         }
 
+        [HttpPost]
         public IActionResult CancelCaseAction(DashboardDetails details , int cancelid)
         {
              _AdminService.CancelPatientRequest(details, cancelid);
@@ -126,6 +129,17 @@ namespace HalloDocWebDemo.Controllers
             _AdminService.AssignCaseRequest(details, assignid);
             return RedirectToAction("AdminDashboard", "Admin");
         }
+
+        //public IActionResult _BlockRequest()
+        //{
+        //    return PartialView("_BlockRequest");
+        //}
+
+        public IActionResult ViewUploads()
+        {
+            return View();
+        }
+
     }
 }
 

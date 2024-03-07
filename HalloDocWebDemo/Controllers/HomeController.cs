@@ -1,4 +1,6 @@
-﻿using HalloDocRepository.DataModels;
+﻿
+using HalloDocRepository.DataContext;
+using HalloDocRepository.DataModels;
 using HalloDocServices.Implementation;
 using HalloDocServices.Interfaces;
 using HalloDocServices.ViewModels;
@@ -6,6 +8,7 @@ using HalloDocWebDemo.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace HalloDocWebDemo.Controllers
@@ -14,9 +17,13 @@ namespace HalloDocWebDemo.Controllers
     public class HomeController : Controller
     {
         private readonly IPatientLoginServices _PatientLoginServices;
-        public HomeController(IPatientLoginServices PatientLoginServices)
+        private readonly IJwtService _jwtService;
+        private readonly ApplicationDbContext _context;
+        public HomeController(IPatientLoginServices PatientLoginServices , IJwtService jwtService , ApplicationDbContext context)
         {
             _PatientLoginServices = PatientLoginServices;
+            _jwtService = jwtService;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -39,32 +46,36 @@ namespace HalloDocWebDemo.Controllers
         {
             return View();
         }
-
-
         [HttpPost]
-        public IActionResult Patient_login(Patienlogin ViewModel)
+        public async Task<IActionResult> Patient_login(AspNetUser model)
         {
 
-            HttpContext.Session.SetString("userEmail", ViewModel.Email);
-            var userEmail = HttpContext.Session.GetString("userEmail");
-            if (!ModelState.IsValid)
+            HttpContext.Session.SetString("userEmail", model.Email);
+
+            var userId = await _PatientLoginServices.Patient_login(model);
+
+            var aspnetuser = _context.AspNetUsers.FirstOrDefault(u => u.Email == model.Email);
+            if (userId == null)
             {
-
-                return View(ViewModel);
+                TempData["error"] = "Username or Password is Incorrect";
+                return View("Login");
             }
-
-            bool isValidUser = _PatientLoginServices.Patient_login(ViewModel);
-
-
-            if (!isValidUser)
+            else
             {
-                TempData["invalid-user"] = true;
-                return View(ViewModel);
-            }
+                TempData["success"] = "User LogIn Successfully";
+                HttpContext.Session.SetString("userId", userId.ToString());
 
-            return RedirectToAction("PatientDashboard", "Patient", new { email = userEmail });
+
+                var jwtToken = _jwtService.GenerateJwtToken(aspnetuser);
+
+                Response.Cookies.Append("jwt", jwtToken);
+
+                return RedirectToAction("PatientDashboard", "Patient");
+
+            }
         }
 
+     
 
         public IActionResult Patient_register()
         {
